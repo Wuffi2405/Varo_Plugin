@@ -1,8 +1,7 @@
 package de.wuffitv.varo;
 
-public class A {
+public class B {
 
-	
 	
 	
 }
