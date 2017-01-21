@@ -40,6 +40,13 @@ public class VARO_PlayerJoinEvent implements Listener {
 			MetaData.players_dummy_online_start.add(player);
 
 		}
+		
+		
+		if (!MetaData.players_online.contains(player)) {
+
+			MetaData.players_online.add(player);
+
+		}
 		if(MetaData.DEBUG == true){
 			player.sendMessage("Du wurdest hinzugefügt!");
 		}

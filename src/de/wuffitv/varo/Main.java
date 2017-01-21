@@ -17,7 +17,6 @@ public class Main extends JavaPlugin implements Listener {
 
 	Engine engine;
 
-	
 	@Override
 	public void onEnable() {
 		super.onEnable();
@@ -92,18 +91,22 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-		
+
 		if (label.equalsIgnoreCase("refresh")) {
 			if (sender instanceof Player) {
-				Player player = (Player) sender;
-				
-				if(!MetaData.players_dummy_online_start.contains(player)){
-					
-					MetaData.players_dummy_online_start.add(player);
-					
+
+				for (Player p : Bukkit.getOnlinePlayers()) {
+
+					if (!MetaData.players_bereit.contains(p)) {
+
+						MetaData.players_dummy_online_start.add(p);
+						p.sendMessage("Du wurdest hinzugefügt!");
+
 					}
-					player.sendMessage("Du wurdest hinzugefügt!");
+
 					
+					
+				}
 				
 				return true;
 			}
@@ -115,15 +118,24 @@ public class Main extends JavaPlugin implements Listener {
 
 				if (!MetaData.players_bereit.contains(player)) {
 					MetaData.players_bereit.add(player);
-					player.sendMessage("Du bist bereit!");
-					Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!");
-
+					
+					
+					
 					for (Player p : Bukkit.getOnlinePlayers()) {
 
+					
 						if (MetaData.players_bereit.contains(p)) {
 
 							MetaData.players_dummy_online_start.remove(p);
 
+							
+							int bereit = MetaData.players_dummy_online_start.size();
+							
+							
+							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!               ");
+
+							
+							
 							if ((MetaData.players_dummy_online_start.size() == 0)) {
 
 								Bukkit.broadcastMessage("Alle sind bereit und das Spiel wird gestartet!");
@@ -135,12 +147,11 @@ public class Main extends JavaPlugin implements Listener {
 
 					}
 
-				}
+				}else 
 
 				if (MetaData.players_bereit.contains(player)) {
 					MetaData.players_bereit.remove(player);
-					player.sendMessage("Du bist nicht mehr bereit!");
-					Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht mehr bereit");
+					Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht mehr bereit          ");
 				}
 
 				return true;
@@ -149,7 +160,5 @@ public class Main extends JavaPlugin implements Listener {
 
 		return super.onCommand(sender, command, label, args);
 	}
-	
-	
 
 }
