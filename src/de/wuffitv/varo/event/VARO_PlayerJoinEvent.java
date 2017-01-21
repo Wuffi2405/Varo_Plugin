@@ -6,8 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import de.wuffitv.varo.MetaData;
 
-public class VARO_PlayerJoinEvent implements Listener{
+public class VARO_PlayerJoinEvent implements Listener {
 
 	/**
 	 * Wenn der Spieler joint
@@ -18,12 +19,20 @@ public class VARO_PlayerJoinEvent implements Listener{
 		 * init Variables
 		 */
 		Player player = e.getPlayer();
-		
+
 		/**
 		 * create Join Message
 		 */
+
 		e.setJoinMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " has joined the game");
 
+		/**
+		 * lists
+		 */
+		if(!MetaData.players.contains(player)){
+		MetaData.players.add(player);
+
+		}
 	}
-	
+
 }

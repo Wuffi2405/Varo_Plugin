@@ -6,6 +6,6 @@ import org.bukkit.entity.Player;
 
 public class MetaData {
 	
-	public ArrayList<Player> players = new ArrayList<>();
+	public static ArrayList<Player> players = new ArrayList<>();
 	
 }
