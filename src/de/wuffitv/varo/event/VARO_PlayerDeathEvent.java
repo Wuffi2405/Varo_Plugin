@@ -22,12 +22,8 @@ public class VARO_PlayerDeathEvent implements Listener {
 		//ggg
 		String killer = (String)event.getEntity().getKiller().getName();
 		Player player = (Player)event.getEntity().getPlayer();
-//		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
-		String msg = "Du wurdest von "+killer+"getötet. \n Du bist somit aus dem Projekt ausgeschlossen.";
-
-		//		Bukkit.banIP(player.getUniqueId().toString());
-		
-		Bukkit.getBanList(Type.NAME).addBan(player.getDisplayName(), ""+msg, null, player.getDisplayName());
+		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
+		player.setBanned(true);
 	}
 	
 }
