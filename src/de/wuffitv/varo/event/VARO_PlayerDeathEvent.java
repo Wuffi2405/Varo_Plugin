@@ -24,6 +24,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 		Player player = (Player)event.getEntity().getPlayer();
 		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
 		player.setBanned(true);
+		
 	}
 	
 }
