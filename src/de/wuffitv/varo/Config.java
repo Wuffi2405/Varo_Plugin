@@ -10,7 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Config {
 	
-	public static File configFile = new File("plugins/varo", "config.yml");
+	public static File configFile = new File("plugins/Varo_Plugin", "config.yml");
 	public static FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(configFile);
 	
 	public Config(){
