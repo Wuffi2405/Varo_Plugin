@@ -7,19 +7,16 @@ import org.bukkit.entity.Player;
 
 public class Engine {
 
-	
 	public static Main plugin;
-	
-	public Engine(Main plugin){
+
+	public Engine(Main plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	private int countdown;
 	private int i = 11;
 
 	public void startCountdown(Player player) {
-
-		
 
 		i = 11;
 		countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
@@ -27,7 +24,6 @@ public class Engine {
 			@Override
 			public void run() {
 
-				
 				if (i != 0) {
 
 					if (i - 1 != 0) {
@@ -42,7 +38,7 @@ public class Engine {
 
 					Bukkit.broadcastMessage("GO!");
 					MetaData.players.clear();
-					
+
 					for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 
 						p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
