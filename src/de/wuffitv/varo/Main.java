@@ -130,13 +130,13 @@ public class Main extends JavaPlugin implements Listener {
 
 							MetaData.players_dummy_online_start.remove(p);
 
-							int bereit = MetaData.players_online.size() - MetaData.players_dummy_online_start.size();
+							int bereit = MetaData.players_bereit.size();
 							int nichtbereit = MetaData.players_online.size();
 
-							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!               " + bereit
-									+ "/" + nichtbereit);
+							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      "
+									+ bereit + "/" + nichtbereit);
 
-							if ((MetaData.players_dummy_online_start.size() == 0)) {
+							if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
 
 								Bukkit.broadcastMessage("Alle sind bereit und das Spiel wird gestartet!");
 								engine.startCountdown(player);
@@ -151,7 +151,12 @@ public class Main extends JavaPlugin implements Listener {
 
 				if (MetaData.players_bereit.contains(player)) {
 					MetaData.players_bereit.remove(player);
-					Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht mehr bereit          ");
+
+					int bereit = MetaData.players_bereit.size();
+					int nichtbereit = MetaData.players_online.size();
+
+					Bukkit.broadcastMessage(
+							player.getDisplayName() + " ist nicht bereit!               " + bereit + "/" + nichtbereit);
 				}
 
 				return true;
