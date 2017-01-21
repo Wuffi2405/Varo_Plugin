@@ -7,6 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class VARO_PlayerDeathEvent implements Listener {
 
 	public static Plugin plugin;
@@ -25,13 +27,16 @@ public class VARO_PlayerDeathEvent implements Listener {
 		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
 		player.setBanned(true);
 
-		String msg = "" + player.getDisplayName() + "wurde von " + killer + " getötet";
-
-		for (Player p : Bukkit.getOnlinePlayers()) {
-
-			p.sendMessage("" + msg);
-
-		}
+		String msg = ChatColor.YELLOW + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.YELLOW + killer + ChatColor.WHITE + " getötet";
+		
+//		event.getDeathMessage();
+		event.setDeathMessage(msg);
+		
+//		for (Player p : Bukkit.getOnlinePlayers()) {
+//
+//			p.sendMessage("" + msg);
+//
+//		}
 
 	}
 
