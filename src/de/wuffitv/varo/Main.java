@@ -29,7 +29,12 @@ public class Main extends JavaPlugin{
 				player.sendMessage(ChatColor.BLUE + "G" + ChatColor.RED + "o" + ChatColor.YELLOW + "o" + ChatColor.BLUE + "g" + ChatColor.GREEN + "l" + ChatColor.RED + "e" + ChatColor.WHITE);
 				return true;
 			}
+			
+			
+			
 		}
 		return super.onCommand(sender, command, label, args);
 	}
+	
+	
 }
