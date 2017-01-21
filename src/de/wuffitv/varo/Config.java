@@ -26,6 +26,7 @@ public class Config {
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED+""+MetaData.spawn_x);
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED+""+MetaData.spawn_z);
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED+""+MetaData.spawn_y);
+			
 		}else if(!configFile.exists()){
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED+"FILE NOT EXISTS");
 			fileConfiguration.set(".spawn_x", 0);
