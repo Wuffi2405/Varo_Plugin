@@ -1,5 +1,6 @@
 package de.wuffitv.varo.event;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,14 +28,14 @@ public class VARO_PlayerJoinEvent implements Listener {
 
 		e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " has joined the game");
 
-
 		/**
 		 * add Player to List
 		 */
-		
+
 		MetaData.players.add(player);
-		player.sendMessage("Du wurdest hinzugefügt!");
-		
+		Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
+		// player.sendMessage("Du wurdest hinzugefügt!");
+
 	}
 
 }
