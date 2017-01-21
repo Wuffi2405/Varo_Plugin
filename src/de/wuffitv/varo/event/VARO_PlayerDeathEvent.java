@@ -25,13 +25,13 @@ public class VARO_PlayerDeathEvent implements Listener {
 
 		String killer = (String) event.getEntity().getKiller().getName();
 		Player player = (Player) event.getEntity().getPlayer();
+		
+		String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
+		event.setDeathMessage(msg);
+		
 		player.setHealth(20);
 		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
 		player.setBanned(true);
-
-		String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
-		
-		event.setDeathMessage(msg);
 
 	}
 
