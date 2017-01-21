@@ -6,14 +6,13 @@ import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.wuffitv.varo.event.VARO_PlayerDeathEvent;
+import de.wuffitv.varo.event.VARO_PlayerJoinEvent;
 
-public class Main extends JavaPlugin implements Listener{
+public class Main extends JavaPlugin implements Listener {
 
 	private int countdown;
 	private int i = 11;
@@ -25,13 +24,13 @@ public class Main extends JavaPlugin implements Listener{
 		/**
 		 * register Events
 		 */
-		
+
 		this.getServer().getPluginManager().registerEvents(this, this);
 		Bukkit.getPluginManager().registerEvents(new VARO_PlayerDeathEvent(this), this);
-	
-	
+		Bukkit.getPluginManager().registerEvents(new VARO_PlayerJoinEvent(), this);
+
 		saveDefaultConfig();
-	
+
 	}
 
 	@Override
@@ -100,14 +99,5 @@ public class Main extends JavaPlugin implements Listener{
 	}
 
 	
-	@EventHandler
-	public void onJoin(PlayerJoinEvent e){
-		Player p = e.getPlayer();
-		e.setJoinMessage(p + " has joined the game");
-	}
-	
-	
-	
-	
-	
+
 }
