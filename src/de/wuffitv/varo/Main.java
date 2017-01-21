@@ -7,12 +7,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.wuffitv.varo.event.VARO_PlayerDeathEvent;
+
 public class Main extends JavaPlugin{
 	
 	@Override
 	public void onEnable() {
 		super.onEnable();
 		Bukkit.getConsoleSender().sendMessage("[VARO] was enabled");
+		/**
+		 * register Events
+		 */
+		Bukkit.getPluginManager().registerEvents(new VARO_PlayerDeathEvent(this), this);
 	}
 	
 	@Override
