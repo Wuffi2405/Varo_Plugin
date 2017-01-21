@@ -17,6 +17,7 @@ public class Main extends JavaPlugin implements Listener {
 
 	Engine engine;
 
+	
 	@Override
 	public void onEnable() {
 		super.onEnable();
@@ -48,7 +49,7 @@ public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		
+
 		/**
 		 * google Befehl
 		 */
@@ -60,7 +61,7 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-		
+
 		/**
 		 * start Event
 		 * 
@@ -72,19 +73,25 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
+<<<<<<< HEAD
 		
 		/**
 		 * remove player with op from the "player" list
 		 */
 		if(label.equalsIgnoreCase("remove")){
 			if(sender instanceof Player){
+
+		if (label.equalsIgnoreCase("remove")) {
+			if (sender instanceof Player) {
 				Player player = (Player) sender;
-				if(player.isOp()){
+				if (player.isOp()) {
 					MetaData.players.remove(player);
+					player.sendMessage("Entfernt");
 				}
 				return true;
 			}
 		}
+<<<<<<< HEAD
 		
 		/**
 		 * heal op players
@@ -98,6 +105,10 @@ public class Main extends JavaPlugin implements Listener {
 			}
 		}
 		return super.onCommand(sender,command,label,args);
+=======
+
+		return super.onCommand(sender, command, label, args);
+>>>>>>> branch 'master' of https://github.com/Wuffi2405/Varo_Plugin.git
 	}
 
 }
