@@ -23,27 +23,47 @@ public class VARO_PlayerDeathEvent implements Listener {
 	public void onPlayerDeath(PlayerDeathEvent event) {
 		
 		if(event.getEntity().getKiller() instanceof Player){
+			/**
+			 * init Vaiables
+			 */
 			String killer = (String) event.getEntity().getKiller().getName();
 			Player player = (Player) event.getEntity().getPlayer();
 			
+			/**
+			 * create DeathMessage
+			 * set Chatmessage
+			 */
 			String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
 			event.setDeathMessage(msg);
 			
-			if(event.getDeathMessage().contains("fell from a high place") || event.getDeathMessage().contains("hit the ground to")){
-				event.setDeathMessage(ChatColor.DARK_GRAY + "" + event.getEntity() + ChatColor.GRAY + " fell a very long distance");
-			}
-			
+			/**
+			 * Player heilen --> stirbt sonst beim nächsten joinene
+			 * Player wird gekickt
+			 * Player wird gebannt
+			 */
 			player.setHealth(20);
-			player.kickPlayer("Du bist gestorben und getötet durch " + killer);
+			player.kickPlayer("Du bist gestorben durch " + killer);
 			player.setBanned(true);
 		}else {
+			/**
+			 * init Variables
+			 */
 			Player player = (Player) event.getEntity().getPlayer();
 			
+			/**
+			 * create DeathMessage
+			 */
 			String deathMessage = event.getDeathMessage().replace(player.getDisplayName(), "");
 			event.setDeathMessage(ChatColor.RED + " " + player.getDisplayName() + ChatColor.WHITE + deathMessage);
 			
+			/**
+			 * Player heilen --> stirbt sonst beim nächsten joinen
+			 * Player wird gekickt
+			 * Player wird gebannt
+			 */
 			player.setHealth(20);
-			player.kickPlayer("Du bist gestorben und getötet durch ");
+			player.kickPlayer("Du bist gestorben");
+			player.setBanned(true);
 		}
 		
 
