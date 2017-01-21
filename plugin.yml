@@ -6,3 +6,5 @@ main: de.wuffitv.varo.Main
 commands:
   google:
     usage: /google
+  start:
+    usage: /start
