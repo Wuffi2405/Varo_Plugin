@@ -18,7 +18,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 	}
 
 	@SuppressWarnings("deprecation")
-	@EventHandler(priority = EventPriority.HIGH)
+	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent event) {
 		
 		if(event.getEntity().getKiller() instanceof Player){
