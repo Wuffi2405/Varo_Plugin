@@ -48,7 +48,7 @@ public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		
+
 		/**
 		 * google Befehl
 		 */
@@ -60,7 +60,7 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-		
+
 		/**
 		 * start Event
 		 * 
@@ -72,19 +72,19 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-		
-		if(label.equalsIgnoreCase("remove")){
-			if(sender instanceof Player){
+
+		if (label.equalsIgnoreCase("remove")) {
+			if (sender instanceof Player) {
 				Player player = (Player) sender;
-				if(player.isOp()){
+				if (player.isOp()) {
 					MetaData.players.remove(player);
 					player.sendMessage("Entfernt");
 				}
 				return true;
 			}
 		}
-		
-		return super.onCommand(sender,command,label,args);
+
+		return super.onCommand(sender, command, label, args);
 	}
 
 }

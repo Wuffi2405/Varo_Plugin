@@ -19,6 +19,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 		this.plugin = plugin;
 	}
 
+	
 	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onPlayerDeath(PlayerDeathEvent event) {
