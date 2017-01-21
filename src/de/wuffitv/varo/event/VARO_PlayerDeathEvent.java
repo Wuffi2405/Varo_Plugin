@@ -29,16 +29,9 @@ public class VARO_PlayerDeathEvent implements Listener {
 		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
 		player.setBanned(true);
 
-		String msg = ChatColor.YELLOW + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.YELLOW + killer + ChatColor.WHITE + " getötet";
+		String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
 		
-//		event.getDeathMessage();
 		event.setDeathMessage(msg);
-		
-//		for (Player p : Bukkit.getOnlinePlayers()) {
-//
-//			p.sendMessage("" + msg);
-//
-//		}
 
 	}
 
