@@ -20,10 +20,11 @@ public class VARO_PlayerDeathEvent implements Listener {
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent event){
 		
-//		String killer = (String)event.getEntity().getKiller().getName();
+		String killer = (String)event.getEntity().getKiller().getName();
 		Player player = (Player)event.getEntity().getPlayer();
 //		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
-		Bukkit.getBanList(Type.NAME).addBan(player.getUniqueId().toString(), "BANNEDDD", null, player.getUniqueId().toString());
+		String msg = "Du wurdest von "+killer+"getötet. \n Du bist somit aus dem Projekt ausgeschlossen.";
+		Bukkit.getBanList(Type.NAME).addBan(player.getUniqueId().toString(), ""+msg, null, player.getUniqueId().toString());
 
 	}
 	
