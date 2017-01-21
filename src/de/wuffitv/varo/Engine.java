@@ -21,11 +21,15 @@ public class Engine {
 		player.sendMessage("You have started the game!");
 		player.sendMessage("");
 
+		
+
+		i = 11;
 		countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
 
 			@Override
 			public void run() {
 
+				
 				if (i != 0) {
 
 					if (i - 1 != 0) {

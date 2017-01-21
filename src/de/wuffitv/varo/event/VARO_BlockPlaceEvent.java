@@ -12,7 +12,7 @@ public class VARO_BlockPlaceEvent {
 	public void onBlockPlace(BlockPlaceEvent event){
 		if(MetaData.players.contains(event.getPlayer())){
 			/**
-			 * Abbauen unterbinden
+			 * Plazieren unterbinden
 			 * Nachricht an den Spieler
 			 */
 			event.setCancelled(true);

@@ -24,7 +24,7 @@ public class Main extends JavaPlugin implements Listener {
 		/**
 		 * Load Engines
 		 */
-		engine = new Engine();
+		engine = new Engine(this);
 		
 		/**
 		 * register Events
