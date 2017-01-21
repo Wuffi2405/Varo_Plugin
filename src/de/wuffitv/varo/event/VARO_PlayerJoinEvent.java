@@ -22,6 +22,7 @@ public class VARO_PlayerJoinEvent implements Listener {
 
 		/**
 		 * create Join Message
+		 * 
 		 */
 
 		e.setJoinMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " has joined the game");
