@@ -55,11 +55,10 @@ public class Main extends JavaPlugin implements Listener{
 			}
 
 			if (label.equalsIgnoreCase("start")) {
-				engine.startCountdown(player);
 				
-
+				engine.startCountdown(player);
 				return true;
-
+			
 			}
 
 		}
