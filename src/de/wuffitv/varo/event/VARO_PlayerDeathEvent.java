@@ -1,6 +1,5 @@
 package de.wuffitv.varo.event;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -29,6 +28,11 @@ public class VARO_PlayerDeathEvent implements Listener {
 			
 			String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
 			event.setDeathMessage(msg);
+			
+			if(event.getDeathMessage().contains("fell from a high place") || event.getDeathMessage().contains("hit the ground to")){
+				event.setDeathMessage(ChatColor.DARK_GRAY + "" + event.getEntity() + ChatColor.GRAY + " fell a very long distance");
+			}
+			
 			
 			player.setHealth(20);
 			player.kickPlayer("Du bist gestorben und getötet durch " + killer);
