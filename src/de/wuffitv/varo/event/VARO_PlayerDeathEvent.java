@@ -31,7 +31,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 		if (MetaData.players.contains(event.getEntity().getPlayer())) {
 
 			event.getEntity().getPlayer().setHealth(20);
-			event.getEntity().getPlayer().setFoodLevel(20);;
+			event.getEntity().getPlayer().setFoodLevel(20);
 			event.setKeepInventory(true);
 			event.setDeathMessage(null);
 		} else {
