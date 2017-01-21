@@ -17,7 +17,7 @@ public class VARO_BlockBreakEvent implements Listener {
 			 * Nachricht an den Spieler
 			 */
 			event.setCancelled(true);
-			event.getPlayer().sendMessage(ChatColor.GOLD + "Du kannst noch keine Blöcke abbauen. \n Warte bis das Event beginnt!");
+			event.getPlayer().sendMessage(ChatColor.GOLD + "Du kannst noch keine Blöcke abbauen. \nWarte bis das Event beginnt!");
 		}
 	}
 	
