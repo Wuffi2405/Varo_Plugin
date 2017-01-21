@@ -103,7 +103,7 @@ public class Main extends JavaPlugin implements Listener {
 						p.sendMessage("Du wurdest zu nicht bereit hinzugefügt!");
 
 					}
-					
+
 					if (!MetaData.players_online.contains(p)) {
 
 						MetaData.players_online.add(p);
@@ -111,10 +111,8 @@ public class Main extends JavaPlugin implements Listener {
 
 					}
 
-					
-					
 				}
-				
+
 				return true;
 			}
 		}
@@ -125,24 +123,19 @@ public class Main extends JavaPlugin implements Listener {
 
 				if (!MetaData.players_bereit.contains(player)) {
 					MetaData.players_bereit.add(player);
-					
-					
-					
+
 					for (Player p : Bukkit.getOnlinePlayers()) {
 
-					
 						if (MetaData.players_bereit.contains(p)) {
 
 							MetaData.players_dummy_online_start.remove(p);
 
-							
-							int bereit = MetaData.players_online.size()-MetaData.players_dummy_online_start.size();
+							int bereit = MetaData.players_online.size() - MetaData.players_dummy_online_start.size();
 							int nichtbereit = MetaData.players_online.size();
-							
-							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!               " + bereit + "/" + nichtbereit);
 
-							
-							
+							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!               " + bereit
+									+ "/" + nichtbereit);
+
 							if ((MetaData.players_dummy_online_start.size() == 0)) {
 
 								Bukkit.broadcastMessage("Alle sind bereit und das Spiel wird gestartet!");
@@ -154,7 +147,7 @@ public class Main extends JavaPlugin implements Listener {
 
 					}
 
-				}else 
+				} else
 
 				if (MetaData.players_bereit.contains(player)) {
 					MetaData.players_bereit.remove(player);
