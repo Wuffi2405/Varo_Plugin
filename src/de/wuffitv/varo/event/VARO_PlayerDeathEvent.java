@@ -1,13 +1,12 @@
 package de.wuffitv.varo.event;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class VARO_PlayerDeathEvent implements Listener {
 
@@ -33,7 +32,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 			 * create DeathMessage
 			 * set Chatmessage
 			 */
-			String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
+			String msg = org.bukkit.ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
 			event.setDeathMessage(msg);
 			
 			/**
