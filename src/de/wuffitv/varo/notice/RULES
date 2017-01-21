@@ -5,6 +5,7 @@ update [what] {[where]}
 -add
 -edit
 -fixBugs
+-addBugs
 -delete
 
 [where]
