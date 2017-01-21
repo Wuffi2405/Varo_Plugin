@@ -17,7 +17,6 @@ public class Main extends JavaPlugin implements Listener {
 
 	Engine engine;
 
-	
 	@Override
 	public void onEnable() {
 		super.onEnable();
@@ -69,7 +68,12 @@ public class Main extends JavaPlugin implements Listener {
 		if (label.equalsIgnoreCase("start")) {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
-				engine.startCountdown(player);
+				
+				if((MetaData.players_dummy_online_start.size() == 0)){
+					
+					engine.startCountdown(player);
+					
+				}
 				return true;
 			}
 		}
@@ -84,17 +88,40 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-		
+
 		if (label.equalsIgnoreCase("bereit")) {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
-				
-				if(!MetaData.players_bereit.contains(player)){
+
+				if (!MetaData.players_bereit.contains(player)) {
 					MetaData.players_bereit.add(player);
+					player.sendMessage("Du bist bereit!");
+					
+					
+					for(Player p: Bukkit.getOnlinePlayers()){
+						
+						if(MetaData.players_bereit.contains(p)){
+							
+							MetaData.players_dummy_online_start.remove(p);
+							
+							if((MetaData.players_dummy_online_start.size() == 0)){
+								
+								engine.startCountdown(player);
+								
+							}
+							
+						}
+						
+					}
+					
+
 				}
-				
-				
-				
+
+				if (MetaData.players_bereit.contains(player)) {
+					MetaData.players_bereit.remove(player);
+					player.sendMessage("Du bist nicht mehr bereit!");
+				}
+
 				return true;
 			}
 		}

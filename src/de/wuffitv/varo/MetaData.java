@@ -8,5 +8,6 @@ public class MetaData {
 	
 	public static ArrayList<Player> players = new ArrayList<>();
 	public static ArrayList<Player> players_bereit = new ArrayList<>();
+	public static ArrayList<Player> players_dummy_online_start = new ArrayList<>();
 	
 }
