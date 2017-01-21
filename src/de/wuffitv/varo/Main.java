@@ -73,6 +73,9 @@ public class Main extends JavaPlugin implements Listener {
 			}
 		}
 		
+		/**
+		 * remove player with op from the "player" list
+		 */
 		if(label.equalsIgnoreCase("remove")){
 			if(sender instanceof Player){
 				Player player = (Player) sender;
@@ -83,6 +86,17 @@ public class Main extends JavaPlugin implements Listener {
 			}
 		}
 		
+		/**
+		 * heal op players
+		 */
+		if(label.equalsIgnoreCase("heal")){
+			if(sender instanceof Player){
+				Player player = (Player) sender;
+				if(player.isOp()){
+					player.setHealth(20);
+				}
+			}
+		}
 		return super.onCommand(sender,command,label,args);
 	}
 
