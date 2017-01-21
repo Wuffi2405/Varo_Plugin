@@ -6,12 +6,12 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class Engine{
-	
+public class Engine {
+
 	private int countdown;
 	private int i = 11;
-	
-	public void startCountdown(Player player){
+
+	public void startCountdown(Player player) {
 		player.sendMessage("You have started the game!");
 		player.sendMessage("");
 
