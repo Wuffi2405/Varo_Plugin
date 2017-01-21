@@ -2,11 +2,12 @@ package de.wuffitv.varo.event;
 
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import de.wuffitv.varo.MetaData;
 
-public class VARO_PlayerBlockBreak {
+public class VARO_BlockBreakEvent implements Listener {
 	
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event){
