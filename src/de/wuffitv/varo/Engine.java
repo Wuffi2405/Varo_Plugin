@@ -15,7 +15,7 @@ public class Engine {
 		player.sendMessage("You have started the game!");
 		player.sendMessage("");
 
-		countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask((Plugin) this, new Runnable() {
+		countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.this, new Runnable() {
 
 			@Override
 			public void run() {
