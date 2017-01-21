@@ -78,6 +78,7 @@ public class Main extends JavaPlugin implements Listener {
 				Player player = (Player) sender;
 				if(player.isOp()){
 					MetaData.players.remove(player);
+					player.sendMessage("Entfernt");
 				}
 				return true;
 			}
