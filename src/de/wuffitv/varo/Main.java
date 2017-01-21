@@ -14,14 +14,18 @@ import org.bukkit.plugin.java.JavaPlugin;
 import de.wuffitv.varo.event.VARO_PlayerDeathEvent;
 
 public class Main extends JavaPlugin implements Listener{
-
-	private int countdown;
-	private int i = 11;
-
+	
+	Engine engine;
+	
 	@Override
 	public void onEnable() {
 		super.onEnable();
 		Bukkit.getConsoleSender().sendMessage("[VARO] was enabled");
+		/**
+		 * Load Engines
+		 */
+		engine = new Engine();
+		
 		/**
 		 * register Events
 		 */
@@ -51,45 +55,8 @@ public class Main extends JavaPlugin implements Listener{
 			}
 
 			if (label.equalsIgnoreCase("start")) {
-
-				player.sendMessage("You have started the game!");
-				player.sendMessage("");
-
-				countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-
-					@Override
-					public void run() {
-
-						if (i != 0) {
-
-							if (i - 1 != 0) {
-								Bukkit.broadcastMessage(ChatColor.GOLD + "" + (i - 1) + "");
-							}
-
-							i--;
-
-						}
-
-						if ((i == 0)) {
-
-							Bukkit.broadcastMessage("GO!");
-
-							for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-
-								p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
-
-							}
-							i--;
-						}
-
-						if (i == -1) {
-
-							Bukkit.getServer().getScheduler().cancelTask(countdown);
-
-						}
-
-					}
-				}, 20L, 20L);
+				engine.startCountdown(player);
+				
 
 				return true;
 
