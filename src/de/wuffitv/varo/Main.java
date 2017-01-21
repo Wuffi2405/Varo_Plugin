@@ -8,7 +8,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.wuffitv.varo.event.VARO_BlockBreakEvent;
+import de.wuffitv.varo.event.VARO_BlockPlaceEvent;
 import de.wuffitv.varo.event.VARO_PlayerDeathEvent;
+import de.wuffitv.varo.event.VARO_PlayerJoinEvent;
 
 public class Main extends JavaPlugin {
 
@@ -23,6 +26,9 @@ public class Main extends JavaPlugin {
 		 * register Events
 		 */
 		Bukkit.getPluginManager().registerEvents(new VARO_PlayerDeathEvent(this), this);
+		Bukkit.getPluginManager().registerEvents(new VARO_PlayerJoinEvent(this), this);
+		Bukkit.getPluginManager().registerEvents(new VARO_BlockBreakEvent(this), this);
+		Bukkit.getPluginManager().registerEvents(new VARO_BlockPlaceEvent(this), this);
 	}
 
 	@Override
@@ -53,11 +59,10 @@ public class Main extends JavaPlugin {
 
 						if (i != 0) {
 
-							
-							if(i-1 != 0){
-							Bukkit.broadcastMessage(ChatColor.GOLD + "" + (i-1) + "");
+							if (i - 1 != 0) {
+								Bukkit.broadcastMessage(ChatColor.GOLD + "" + (i - 1) + "");
 							}
-							
+
 							i--;
 
 						}
@@ -65,6 +70,9 @@ public class Main extends JavaPlugin {
 						if ((i == 0)) {
 
 							Bukkit.broadcastMessage("GO!");
+							VARO_PlayerJoinEvent.players.clear();
+							
+							
 							for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 
 								p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
