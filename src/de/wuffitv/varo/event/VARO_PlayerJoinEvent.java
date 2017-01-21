@@ -33,7 +33,7 @@ public class VARO_PlayerJoinEvent implements Listener {
 		 */
 		
 		MetaData.players.add(player);
-
+		player.sendMessage("Du wurdest hinzugefügt!");
 		
 	}
 
