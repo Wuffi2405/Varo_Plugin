@@ -18,7 +18,10 @@ public class VARO_PlayerDeathEvent implements Listener {
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent event){
 		Player player = (Player)event.getEntity().getPlayer();
-		player.kickPlayer("Du bist gestorben");
+//		player.kickPlayer("Du bist gestorben");
+		if(player.isOnline()){
+			player.setBanned(true);
+		}
 	}
 	
 }
