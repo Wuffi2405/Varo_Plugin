@@ -3,3 +3,6 @@ author: Wuffi2405&FraFrieFa
 version: 1.0.0
 description: varo
 main: de.wuffitv.varo.Main
+commands:
+  google:
+    usage: /google
