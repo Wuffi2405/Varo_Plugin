@@ -33,7 +33,6 @@ public class VARO_PlayerDeathEvent implements Listener {
 				event.setDeathMessage(ChatColor.DARK_GRAY + "" + event.getEntity() + ChatColor.GRAY + " fell a very long distance");
 			}
 			
-			
 			player.setHealth(20);
 			player.kickPlayer("Du bist gestorben und getötet durch " + killer);
 			player.setBanned(true);
