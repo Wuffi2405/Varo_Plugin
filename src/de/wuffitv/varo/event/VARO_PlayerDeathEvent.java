@@ -27,7 +27,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 
 		//		Bukkit.banIP(player.getUniqueId().toString());
 		
-		Bukkit.getBanList(Type.IP).addBan(player.getUniqueId().toString(), ""+msg, null, player.getUniqueId().toString());
+		Bukkit.getBanList(Type.NAME).addBan(player.getDisplayName(), ""+msg, null, player.getDisplayName());
 	}
 	
 }
