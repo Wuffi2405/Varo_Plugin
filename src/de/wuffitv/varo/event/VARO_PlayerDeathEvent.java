@@ -24,8 +24,10 @@ public class VARO_PlayerDeathEvent implements Listener {
 		Player player = (Player)event.getEntity().getPlayer();
 //		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
 		String msg = "Du wurdest von "+killer+"getötet. \n Du bist somit aus dem Projekt ausgeschlossen.";
-		Bukkit.banIP(player.getUniqueId().toString());
 
+		//		Bukkit.banIP(player.getUniqueId().toString());
+		
+		Bukkit.getBanList(Type.IP).addBan(player.getUniqueId().toString(), ""+msg, null, player.getUniqueId().toString());
 	}
 	
 }
