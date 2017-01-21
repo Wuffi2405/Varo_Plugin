@@ -8,5 +8,5 @@ commands:
     usage: /google
   start:
     usage: /start
-  remove
+  remove:
     usage: /remove
