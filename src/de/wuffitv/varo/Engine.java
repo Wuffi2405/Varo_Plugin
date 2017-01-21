@@ -37,6 +37,8 @@ public class Engine {
 					for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 
 						p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
+						p.setHealth(20);
+						p.setSaturation(20);
 
 					}
 					i--;

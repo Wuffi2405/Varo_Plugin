@@ -1,0 +1,11 @@
+When update the Code:
+update [what] {[where]}
+
+[what]
+-add
+-edit
+-fixBugs
+-delete
+
+[where]
+-the Class

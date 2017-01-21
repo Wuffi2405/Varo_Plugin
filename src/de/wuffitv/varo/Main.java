@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.wuffitv.varo.event.VARO_BlockBreakEvent;
 import de.wuffitv.varo.event.VARO_PlayerDeathEvent;
 import de.wuffitv.varo.event.VARO_PlayerJoinEvent;
 
@@ -32,6 +33,7 @@ public class Main extends JavaPlugin implements Listener {
 		this.getServer().getPluginManager().registerEvents(this, this);
 		Bukkit.getPluginManager().registerEvents(new VARO_PlayerDeathEvent(this), this);
 		Bukkit.getPluginManager().registerEvents(new VARO_PlayerJoinEvent(), this);
+		Bukkit.getPluginManager().registerEvents(new VARO_BlockBreakEvent(), this);
 
 		saveDefaultConfig();
 
