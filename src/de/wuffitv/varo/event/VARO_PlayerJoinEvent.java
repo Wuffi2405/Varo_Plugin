@@ -2,6 +2,7 @@ package de.wuffitv.varo.event;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -34,14 +35,15 @@ public class VARO_PlayerJoinEvent implements Listener {
 
 		MetaData.players.add(player);
 
-		
-		if(!MetaData.players_dummy_online_start.contains(player)){
-		
-		MetaData.players_dummy_online_start.add(player);
-		
+		if (!MetaData.players_dummy_online_start.contains(player)) {
+
+			MetaData.players_dummy_online_start.add(player);
+
 		}
-		player.sendMessage("Du wurdest hinzugefügt!");
-		
+		if(MetaData.DEBUG == true){
+			player.sendMessage("Du wurdest hinzugefügt!");
+		}
+		player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
 
 		Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
 		// player.sendMessage("Du wurdest hinzugefügt!");
