@@ -39,7 +39,8 @@ public class VARO_PlayerDeathEvent implements Listener {
 		}else {
 			Player player = (Player) event.getEntity().getPlayer();
 			
-			event.setDeathMessage(ChatColor.RED + " " + player + ChatColor.WHITE + event.getDeathMessage());
+			String deathMessage = event.getDeathMessage().replace(player.getDisplayName(), "");
+			event.setDeathMessage(ChatColor.RED + " " + player.getDisplayName() + ChatColor.WHITE + deathMessage);
 			
 			player.setHealth(20);
 			player.kickPlayer("Du bist gestorben und getötet durch ");
