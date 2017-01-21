@@ -22,16 +22,23 @@ public class VARO_PlayerDeathEvent implements Listener {
 	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onPlayerDeath(PlayerDeathEvent event) {
-
-		String killer = (String) event.getEntity().getKiller().getName();
-		Player player = (Player) event.getEntity().getPlayer();
 		
-		String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
-		event.setDeathMessage(msg);
+		if(event.getEntity().getKiller() instanceof Player){
+			String killer = (String) event.getEntity().getKiller().getName();
+			Player player = (Player) event.getEntity().getPlayer();
+			
+			String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
+			event.setDeathMessage(msg);
+			
+			player.setHealth(20);
+			player.kickPlayer("Du bist gestorben und getötet durch " + killer);
+			player.setBanned(true);
+		}else {
+			Player player = (Player) event.getEntity().getPlayer();
+			
+			player.kickPlayer("Du bist gestorben und getötet durch ");
+		}
 		
-		player.setHealth(20);
-		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
-		player.setBanned(true);
 
 	}
 
