@@ -43,7 +43,8 @@ public class Engine {
 				if ((i == 0)) {
 
 					Bukkit.broadcastMessage("GO!");
-
+					MetaData.players.clear();
+					
 					for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 
 						p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
