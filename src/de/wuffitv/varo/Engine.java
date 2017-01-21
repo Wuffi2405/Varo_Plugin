@@ -18,8 +18,6 @@ public class Engine {
 	private int i = 11;
 
 	public void startCountdown(Player player) {
-		player.sendMessage("You have started the game!");
-		player.sendMessage("");
 
 		
 
