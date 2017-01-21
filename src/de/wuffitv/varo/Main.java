@@ -21,6 +21,9 @@ public class Main extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		super.onEnable();
+
+		new Config();
+
 		Bukkit.getConsoleSender().sendMessage("[VARO] was enabled");
 		/**
 		 * Load Engines
@@ -69,7 +72,12 @@ public class Main extends JavaPlugin implements Listener {
 		if (label.equalsIgnoreCase("start")) {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
-				engine.startCountdown(player);
+
+				if ((MetaData.players_dummy_online_start.size() == 0)) {
+
+					engine.startCountdown(player);
+
+				}
 				return true;
 			}
 		}
@@ -85,21 +93,63 @@ public class Main extends JavaPlugin implements Listener {
 			}
 		}
 		
-		if (label.equalsIgnoreCase("bereit")) {
+		if (label.equalsIgnoreCase("refresh")) {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 				
-				if(!MetaData.players_bereit.contains(player)){
+				if(!MetaData.players_dummy_online_start.contains(player)){
+					
+					MetaData.players_dummy_online_start.add(player);
+					
+					}
+					player.sendMessage("Du wurdest hinzugefügt!");
+					
+				
+				return true;
+			}
+		}
+
+		if (label.equalsIgnoreCase("bereit")) {
+			if (sender instanceof Player) {
+				Player player = (Player) sender;
+
+				if (!MetaData.players_bereit.contains(player)) {
 					MetaData.players_bereit.add(player);
+					player.sendMessage("Du bist bereit!");
+					Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!");
+
+					for (Player p : Bukkit.getOnlinePlayers()) {
+
+						if (MetaData.players_bereit.contains(p)) {
+
+							MetaData.players_dummy_online_start.remove(p);
+
+							if ((MetaData.players_dummy_online_start.size() == 0)) {
+
+								Bukkit.broadcastMessage("Alle sind bereit und das Spiel wird gestartet!");
+								engine.startCountdown(player);
+
+							}
+
+						}
+
+					}
+
 				}
-				
-				
-				
+
+				if (MetaData.players_bereit.contains(player)) {
+					MetaData.players_bereit.remove(player);
+					player.sendMessage("Du bist nicht mehr bereit!");
+					Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht mehr bereit");
+				}
+
 				return true;
 			}
 		}
 
 		return super.onCommand(sender, command, label, args);
 	}
+	
+	
 
 }

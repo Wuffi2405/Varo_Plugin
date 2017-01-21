@@ -33,6 +33,16 @@ public class VARO_PlayerJoinEvent implements Listener {
 		 */
 
 		MetaData.players.add(player);
+
+		
+		if(!MetaData.players_dummy_online_start.contains(player)){
+		
+		MetaData.players_dummy_online_start.add(player);
+		
+		}
+		player.sendMessage("Du wurdest hinzugefügt!");
+		
+
 		Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
 		// player.sendMessage("Du wurdest hinzugefügt!");
 
