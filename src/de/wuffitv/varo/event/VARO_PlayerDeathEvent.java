@@ -1,7 +1,5 @@
 package de.wuffitv.varo.event;
 
-import org.bukkit.BanList.Type;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,7 +22,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 		Player player = (Player)event.getEntity().getPlayer();
 		player.kickPlayer("Du bist gestorben und getötet durch " + killer);
 		player.setBanned(true);
-	
+
 	}
 	
 }
