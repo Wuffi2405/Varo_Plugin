@@ -15,9 +15,8 @@ import de.wuffitv.varo.event.VARO_PlayerJoinEvent;
 
 public class Main extends JavaPlugin implements Listener {
 
-	
 	Engine engine;
-	
+
 	@Override
 	public void onEnable() {
 		super.onEnable();
@@ -26,7 +25,7 @@ public class Main extends JavaPlugin implements Listener {
 		 * Load Engines
 		 */
 		engine = new Engine(this);
-		
+
 		/**
 		 * register Events
 		 */
@@ -39,7 +38,6 @@ public class Main extends JavaPlugin implements Listener {
 
 		saveDefaultConfig();
 
-		
 	}
 
 	@Override
@@ -50,27 +48,41 @@ public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if (sender instanceof Player) {
-			Player player = (Player) sender;
-			if (label.equalsIgnoreCase("google")) {
+		
+		/**
+		 * google Befehl
+		 */
+		if (label.equalsIgnoreCase("google")) {
+			if (sender instanceof Player) {
+				Player player = (Player) sender;
 				player.sendMessage(ChatColor.BLUE + "G" + ChatColor.RED + "o" + ChatColor.YELLOW + "o" + ChatColor.BLUE
 						+ "g" + ChatColor.GREEN + "l" + ChatColor.RED + "e" + ChatColor.WHITE);
 				return true;
 			}
-
-			if (label.equalsIgnoreCase("start")) {
-				
-				
-				
+		}
+		
+		/**
+		 * start Event
+		 */
+		if (label.equalsIgnoreCase("start")) {
+			if (sender instanceof Player) {
+				Player player = (Player) sender;
 				engine.startCountdown(player);
 				return true;
-			
 			}
-
 		}
-		return super.onCommand(sender, command, label, args);
+		
+		if(label.equalsIgnoreCase("remove")){
+			if(sender instanceof Player){
+				Player player = (Player) sender;
+				if(player.isOp()){
+					MetaData.players.remove(player);
+				}
+				return true;
+			}
+		}
+		
+		return super.onCommand(sender,command,label,args);
 	}
-
-	
 
 }
