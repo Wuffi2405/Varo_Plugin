@@ -100,7 +100,14 @@ public class Main extends JavaPlugin implements Listener {
 					if (!MetaData.players_bereit.contains(p)) {
 
 						MetaData.players_dummy_online_start.add(p);
-						p.sendMessage("Du wurdest hinzugefügt!");
+						p.sendMessage("Du wurdest zu nicht bereit hinzugefügt!");
+
+					}
+					
+					if (!MetaData.players_online.contains(p)) {
+
+						MetaData.players_online.add(p);
+						p.sendMessage("Du wurdest zu Online hinzugefügt!");
 
 					}
 
@@ -129,10 +136,10 @@ public class Main extends JavaPlugin implements Listener {
 							MetaData.players_dummy_online_start.remove(p);
 
 							
-							int bereit = MetaData.players_dummy_online_start.size();
+							int bereit = MetaData.players_online.size()-MetaData.players_dummy_online_start.size();
+							int nichtbereit = MetaData.players_online.size();
 							
-							
-							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!               ");
+							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!               " + bereit + "/" + nichtbereit);
 
 							
 							

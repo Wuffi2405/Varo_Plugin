@@ -7,6 +7,11 @@ import org.bukkit.entity.Player;
 public class MetaData {
 	
 	public static ArrayList<Player> players = new ArrayList<>();
+	
+	/**
+	 * alles für den Start 
+	 */
+	
 	public static ArrayList<Player> players_bereit = new ArrayList<>();
 	public static ArrayList<Player> players_dummy_online_start = new ArrayList<>();
 	public static ArrayList<Player> players_online = new ArrayList<>();
