@@ -4,10 +4,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class Engine {
 
+	
+	public static Main plugin;
+	
+	public Engine(Main plugin){
+		this.plugin = plugin;
+	}
+	
 	private int countdown;
 	private int i = 11;
 
@@ -15,7 +21,7 @@ public class Engine {
 		player.sendMessage("You have started the game!");
 		player.sendMessage("");
 
-		countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.this, new Runnable() {
+		countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
 
 			@Override
 			public void run() {
