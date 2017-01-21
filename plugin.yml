@@ -10,3 +10,5 @@ commands:
     usage: /start
   remove:
     usage: /remove
+  bereit:
+    usage: /bereit

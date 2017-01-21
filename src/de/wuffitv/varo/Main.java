@@ -84,6 +84,20 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
+		
+		if (label.equalsIgnoreCase("bereit")) {
+			if (sender instanceof Player) {
+				Player player = (Player) sender;
+				
+				if(!MetaData.players_bereit.contains(player)){
+					MetaData.players_bereit.add(player);
+				}
+				
+				
+				
+				return true;
+			}
+		}
 
 		return super.onCommand(sender, command, label, args);
 	}
