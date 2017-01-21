@@ -6,14 +6,14 @@ import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.wuffitv.varo.event.VARO_BlockBreakEvent;
-import de.wuffitv.varo.event.VARO_BlockPlaceEvent;
 import de.wuffitv.varo.event.VARO_PlayerDeathEvent;
-import de.wuffitv.varo.event.VARO_PlayerJoinEvent;
 
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin implements Listener{
 
 	private int countdown;
 	private int i = 11;
@@ -25,10 +25,13 @@ public class Main extends JavaPlugin {
 		/**
 		 * register Events
 		 */
+		
+		this.getServer().getPluginManager().registerEvents(this, this);
 		Bukkit.getPluginManager().registerEvents(new VARO_PlayerDeathEvent(this), this);
-		Bukkit.getPluginManager().registerEvents(new VARO_PlayerJoinEvent(this), this);
-		Bukkit.getPluginManager().registerEvents(new VARO_BlockBreakEvent(this), this);
-		Bukkit.getPluginManager().registerEvents(new VARO_BlockPlaceEvent(this), this);
+	
+	
+		saveDefaultConfig();
+	
 	}
 
 	@Override
@@ -70,9 +73,7 @@ public class Main extends JavaPlugin {
 						if ((i == 0)) {
 
 							Bukkit.broadcastMessage("GO!");
-							VARO_PlayerJoinEvent.players.clear();
-							
-							
+
 							for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 
 								p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
@@ -98,4 +99,15 @@ public class Main extends JavaPlugin {
 		return super.onCommand(sender, command, label, args);
 	}
 
+	
+	@EventHandler
+	public void onJoin(PlayerJoinEvent e){
+		Player p = e.getPlayer();
+		e.setJoinMessage(p + " has joined the game");
+	}
+	
+	
+	
+	
+	
 }
