@@ -2,3 +2,27 @@
 2: countdown
 3: no kill
 4: no break and place
+
+if(event.getEntity().getKiller() instanceof Player){
+			String killer = (String) event.getEntity().getKiller().getName();
+			Player player = (Player) event.getEntity().getPlayer();
+			
+			String msg = ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von " + ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
+			event.setDeathMessage(msg);
+			
+			player.setHealth(20);
+			player.kickPlayer("Du bist gestorben und getötet durch " + killer);
+			player.setBanned(true);
+		}else {
+			Player player = (Player) event.getEntity().getPlayer();
+			
+			event.setDeathMessage(player+" ist gestorben");
+			
+			player.setHealth(20);
+			player.kickPlayer("Du bist gestorben und getötet durch ");
+		}
+		
+		
+		if(event.getDeathMessage().contains("fell from a high place") || event.getDeathMessage().contains("hit the ground to")){
+				event.setDeathMessage(ChatColor.DARK_GRAY + "" + event.getEntity() + ChatColor.GRAY + " fell a very long distance");
+			}
