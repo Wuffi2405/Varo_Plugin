@@ -25,6 +25,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 
 		/**
 		 * Vermeidung des Todes
+		 * 
 		 */
 		
 		if (MetaData.players.contains(event.getEntity().getPlayer())) {
