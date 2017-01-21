@@ -24,37 +24,36 @@ public class VARO_PlayerJoinEvent implements Listener {
 
 		/**
 		 * create Join Message
-		 * 
 		 */
-
 		e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " has joined the game");
 
-		/**
-		 * add Player to List
-		 */
+		if (MetaData.players_ingame.contains(player)) {
+			e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " ist wieder da");
+		} else {
+			/**
+			 * add Player to List
+			 */
+			MetaData.players.add(player);
 
-		MetaData.players.add(player);
+			if (!MetaData.players_dummy_online_start.contains(player)) {
 
-		if (!MetaData.players_dummy_online_start.contains(player)) {
+				MetaData.players_dummy_online_start.add(player);
 
-			MetaData.players_dummy_online_start.add(player);
+			}
 
+			if (!MetaData.players_online.contains(player)) {
+
+				MetaData.players_online.add(player);
+
+			}
+			if (MetaData.DEBUG == true) {
+				player.sendMessage("Du wurdest hinzugefügt!");
+			}
+			player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+
+			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
+			// player.sendMessage("Du wurdest hinzugefügt!");
 		}
-		
-		
-		if (!MetaData.players_online.contains(player)) {
-
-			MetaData.players_online.add(player);
-
-		}
-		if(MetaData.DEBUG == true){
-			player.sendMessage("Du wurdest hinzugefügt!");
-		}
-		player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
-		
-		
-		Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
-		// player.sendMessage("Du wurdest hinzugefügt!");
 
 	}
 
