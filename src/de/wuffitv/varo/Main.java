@@ -17,11 +17,12 @@ public class Main extends JavaPlugin implements Listener {
 
 	Engine engine;
 
+	
 	@Override
 	public void onEnable() {
 		super.onEnable();
 
-		Config.setSpawn();
+		new Config();
 
 		Bukkit.getConsoleSender().sendMessage("[VARO] was enabled");
 		/**
