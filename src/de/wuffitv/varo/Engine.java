@@ -25,6 +25,7 @@ public class Engine {
 	}
 
 	private int countdown;
+	private int border;
 	private int i = 11;
 
 	public void startCountdown(Player sender) {
@@ -51,6 +52,30 @@ public class Engine {
 					countdownrunning = 0;
 					Bukkit.broadcastMessage("GO!");
 					Bukkit.broadcastMessage("Die Border verkleinert sich in " + MetaData.border_size_lower_time + " Sekunden!");
+					
+					
+					border = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+						
+						@Override
+						public void run() {
+							
+							int timer = MetaData.border_size_lower_time;
+							
+							if(timer > 0){
+								
+								Bukkit.broadcastMessage("Borderverkleinerung in" + timer + " Sekunden!");
+								timer--;
+								
+								
+							}
+							
+							
+							
+						}
+					}, 0, MetaData.border_size_lower_time);
+					
+					
+					
 					MetaData.players.clear();
 
 					for (Player p : Bukkit.getServer().getOnlinePlayers()) {

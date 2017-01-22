@@ -73,11 +73,10 @@ public class Main extends JavaPlugin implements Listener {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 
-				if ((MetaData.players_dummy_online_start.size() == 0)) {
-
+				
 					engine.startCountdown(player);
 
-				}
+				
 				return true;
 			}
 		}
