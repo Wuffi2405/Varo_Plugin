@@ -1,7 +1,6 @@
 package de.wuffitv.varo;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -58,8 +57,7 @@ public class Main extends JavaPlugin implements Listener {
 		if (label.equalsIgnoreCase("google")) {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
-				player.sendMessage(ChatColor.BLUE + "G" + ChatColor.RED + "o" + ChatColor.YELLOW + "o" + ChatColor.BLUE
-						+ "g" + ChatColor.GREEN + "l" + ChatColor.RED + "e" + ChatColor.WHITE);
+				player.sendMessage(ChatMessage.VARO_Player_google());
 				return true;
 			}
 		}
@@ -81,6 +79,7 @@ public class Main extends JavaPlugin implements Listener {
 		}
 		
 		/**
+		 * DEBUG
 		 * sich selbst aus der Liste entfernen
 		 */
 		if (label.equalsIgnoreCase("remove")) {
@@ -88,14 +87,14 @@ public class Main extends JavaPlugin implements Listener {
 				Player player = (Player) sender;
 				if (player.isOp()) {
 					MetaData.players.remove(player);
-					player.sendMessage("Entfernt");
+					player.sendMessage("[DEBUG] Entfernt");
 				}
 				return true;
 			}
 		}
 		
 		/**
-		 * BITTE VERVOLLSTÄNDIGEN
+		 * DEBUG
 		 */
 		if (label.equalsIgnoreCase("refresh")) {
 			if (sender instanceof Player) {
@@ -105,28 +104,28 @@ public class Main extends JavaPlugin implements Listener {
 					if (!MetaData.players_bereit.contains(p)) {
 
 						MetaData.players_dummy_online_start.add(p);
-						p.sendMessage("Du wurdest zu nicht bereit hinzugefügt!");
+						p.sendMessage("[DEBUG] Du wurdest zu nicht bereit hinzugefügt!");
 
 					} else {
-						p.sendMessage("keine Änderungen wurden vorgenommen!");
+						p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
 					}
 
 					if (!MetaData.players_online.contains(p)) {
 
 						MetaData.players_online.add(p);
-						p.sendMessage("Du wurdest zu Online hinzugefügt!");
+						p.sendMessage("[DEBUG] Du wurdest zu Online hinzugefügt!");
 
 					} else {
-						p.sendMessage("keine Änderungen wurden vorgenommen!");
+						p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
 					}
 
 					if (!MetaData.players.contains(p)) {
 
 						MetaData.players.add(p);
-						p.sendMessage("Du wurdest zu startfähig hinzugefügt!");
+						p.sendMessage("[DEBUG] Du wurdest zu startfähig hinzugefügt!");
 
 					} else {
-						p.sendMessage("keine Änderungen wurden vorgenommen!");
+						p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
 					}
 
 				}
@@ -162,8 +161,7 @@ public class Main extends JavaPlugin implements Listener {
 
 								if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
 
-									Bukkit.broadcastMessage(
-											ChatColor.DARK_PURPLE + "Alle sind bereit und das Spiel wird gestartet!");
+									Bukkit.broadcastMessage(ChatMessage.VARO_Player_allBereit());
 									engine.startCountdown(player);
 
 								}
