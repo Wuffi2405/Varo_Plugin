@@ -22,7 +22,11 @@ public class Config {
 			MetaData.spawn_x = fileConfiguration.getInt(".spawn_x");
 			MetaData.spawn_z = fileConfiguration.getInt(".spawn_z");
 			MetaData.spawn_y = fileConfiguration.getInt(".spawn_y");
-
+			
+			MetaData.border_size = fileConfiguration.getInt(".border_size");
+			MetaData.border_size_min = fileConfiguration.getInt(".border_size_min");
+			MetaData.border_size_lower_per_time = fileConfiguration.getInt(".border_size_lower_per_time");
+			
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_x);
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_z);
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_y);
@@ -30,10 +34,12 @@ public class Config {
 		} else if (!configFile.exists()) {
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "FILE NOT EXISTS");
 			fileConfiguration.set(".spawn_x", 0);
-			fileConfiguration.set(".spawn_z", 0);
+			fileConfiguration.set(".spawn_z", 80);
 			fileConfiguration.set(".spawn_y", 0);
 
-			
+			fileConfiguration.set(".border_size", 0);
+			fileConfiguration.set(".border_size_min", 0);
+			fileConfiguration.set(".border_size_lower_per_time", 0);
 			
 			try {
 				fileConfiguration.save(configFile);
