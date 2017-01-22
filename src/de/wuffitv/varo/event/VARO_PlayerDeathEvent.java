@@ -1,12 +1,12 @@
 package de.wuffitv.varo.event;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 
+import de.wuffitv.varo.ChatMessage;
 import de.wuffitv.varo.MetaData;
 
 public class VARO_PlayerDeathEvent implements Listener {
@@ -43,11 +43,9 @@ public class VARO_PlayerDeathEvent implements Listener {
 				Player player = (Player) event.getEntity().getPlayer();
 
 				/**
-				 * create DeathMessage set Chatmessage
+				 * set Chatmessage
 				 */
-				String msg = org.bukkit.ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " wurde von "
-						+ ChatColor.GREEN + killer + ChatColor.WHITE + " getötet";
-				event.setDeathMessage(msg);
+				event.setDeathMessage(ChatMessage.VARO_PlayerDeathEvent_DieByPlayer(player, killer));
 
 				/**
 				 * Player heilen --> stirbt sonst beim nächsten joinene Player
@@ -63,10 +61,9 @@ public class VARO_PlayerDeathEvent implements Listener {
 				Player player = (Player) event.getEntity().getPlayer();
 
 				/**
-				 * create DeathMessage
+				 * set DeathMessage
 				 */
-				String deathMessage = event.getDeathMessage().replace(player.getDisplayName(), "");
-				event.setDeathMessage(ChatColor.RED + " " + player.getDisplayName() + ChatColor.WHITE + deathMessage);
+				event.setDeathMessage(ChatMessage.VARO_PlayerDeathEvent_DieByNatur(player, event.getDeathMessage()));
 
 				/**
 				 * Player heilen --> stirbt sonst beim nächsten joinen Player
