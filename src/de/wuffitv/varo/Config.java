@@ -33,6 +33,8 @@ public class Config {
 			fileConfiguration.set(".spawn_z", 0);
 			fileConfiguration.set(".spawn_y", 0);
 
+			
+			
 			try {
 				fileConfiguration.save(configFile);
 			} catch (IOException e) {

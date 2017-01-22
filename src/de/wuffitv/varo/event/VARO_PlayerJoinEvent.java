@@ -2,6 +2,7 @@ package de.wuffitv.varo.event;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -52,6 +53,13 @@ public class VARO_PlayerJoinEvent implements Listener {
 
 			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
 			// player.sendMessage("Du wurdest hinzugefügt!");
+			
+			/**
+			 * survival bei join
+			 */
+			
+			player.setGameMode(GameMode.SURVIVAL);
+			
 		}
 
 	}

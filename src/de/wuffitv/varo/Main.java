@@ -134,7 +134,7 @@ public class Main extends JavaPlugin implements Listener {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 
-				if (MetaData.countdownisrunning = false) {
+				if (Engine.countdownrunning == 0) {
 
 					if (!MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
 						MetaData.players_bereit.add(player);
@@ -153,7 +153,8 @@ public class Main extends JavaPlugin implements Listener {
 
 								if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
 
-									Bukkit.broadcastMessage("Alle sind bereit und das Spiel wird gestartet!");
+									Bukkit.broadcastMessage(
+											ChatColor.DARK_PURPLE + "Alle sind bereit und das Spiel wird gestartet!");
 									engine.startCountdown(player);
 
 								}
@@ -180,10 +181,10 @@ public class Main extends JavaPlugin implements Listener {
 
 					}
 
-				} else
+				} else if (Engine.countdownrunning == 1) {
 
-				{
-					player.sendMessage("Der Countdown läuft schon!");
+					player.sendMessage("Der countdown läuft bereits");
+
 				}
 
 				return true;
