@@ -9,6 +9,7 @@ public class Engine {
 
 	public static Main plugin;
 
+	@SuppressWarnings("static-access")
 	public Engine(Main plugin) {
 		this.plugin = plugin;
 	}
@@ -57,5 +58,5 @@ public class Engine {
 
 			}
 		}, 20L, 20L);
-	}
+	} 
 }
