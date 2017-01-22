@@ -25,6 +25,7 @@ public class Engine {
 	}
 
 	private int countdown;
+	private int border;
 	private int i = 11;
 
 	public void startCountdown(Player sender) {
@@ -50,6 +51,31 @@ public class Engine {
 
 					countdownrunning = 0;
 					Bukkit.broadcastMessage("GO!");
+					Bukkit.broadcastMessage("Die Border verkleinert sich in " + MetaData.border_size_lower_time + " Sekunden!");
+					
+					
+					border = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+						
+						@Override
+						public void run() {
+							
+							int timer = MetaData.border_size_lower_time;
+							
+							if(timer > 0){
+								
+								Bukkit.broadcastMessage("Borderverkleinerung in" + timer + " Sekunden!");
+								timer--;
+								
+								
+							}
+							
+							
+							
+						}
+					}, 0, MetaData.border_size_lower_time);
+					
+					
+					
 					MetaData.players.clear();
 
 					for (Player p : Bukkit.getServer().getOnlinePlayers()) {
@@ -60,7 +86,10 @@ public class Engine {
 						p.setGameMode(GameMode.SURVIVAL);
 						p.getWorld().setDifficulty(Difficulty.HARD);
 						p.teleport(new Location(sender.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
-
+						p.getWorld().getWorldBorder().setCenter(new Location(sender.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+						
+						
+						
 					}
 					i--;
 				}
@@ -71,6 +100,8 @@ public class Engine {
 
 				}
 
+			
+			
 			}
 		}, 20L, 20L);
 	} 

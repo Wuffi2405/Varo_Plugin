@@ -15,6 +15,8 @@ import de.wuffitv.varo.event.VARO_PlayerJoinEvent;
 public class Main extends JavaPlugin implements Listener {
 
 	Engine engine;
+	public static int bereit;
+	public static int nichtbereit;
 
 	@Override
 	public void onEnable() {
@@ -69,15 +71,14 @@ public class Main extends JavaPlugin implements Listener {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 
-				if ((MetaData.players_dummy_online_start.size() == 0)) {
-
+				
 					engine.startCountdown(player);
 
-				}
+				
 				return true;
 			}
 		}
-		
+
 		/**
 		 * DEBUG
 		 * sich selbst aus der Liste entfernen
@@ -92,7 +93,7 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-		
+
 		/**
 		 * DEBUG
 		 * startbereit machen
@@ -134,10 +135,10 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-			
+
 		/**
-		 * Die bereit-Funktion
-		 * Der Countdown geht erst los, wenn alle Spieler bereit sind
+		 * Die bereit-Funktion Der Countdown geht erst los, wenn alle Spieler
+		 * bereit sind
 		 */
 		if (label.equalsIgnoreCase("bereit")) {
 			if (sender instanceof Player) {
@@ -154,6 +155,7 @@ public class Main extends JavaPlugin implements Listener {
 
 								MetaData.players_dummy_online_start.remove(p);
 
+<<<<<<< HEAD
 								int bereit = MetaData.players_bereit.size();
 								int nichtbereit = MetaData.players_online.size();
 
@@ -166,8 +168,23 @@ public class Main extends JavaPlugin implements Listener {
 									engine.startCountdown(player);
 
 								}
+=======
+								bereit = MetaData.players_bereit.size();
+								nichtbereit = MetaData.players_online.size();
+>>>>>>> branch 'master' of https://github.com/Wuffi2405/Varo_Plugin.git
 
 							}
+
+						}
+
+						Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      " + bereit
+								+ "/" + nichtbereit);
+
+						if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
+
+							Bukkit.broadcastMessage(
+									ChatColor.DARK_PURPLE + "Alle sind bereit und das Spiel wird gestartet!");
+							engine.startCountdown(player);
 
 						}
 

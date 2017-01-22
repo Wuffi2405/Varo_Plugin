@@ -25,7 +25,7 @@ public class Config {
 			
 			MetaData.border_size = fileConfiguration.getInt(".border_size");
 			MetaData.border_size_min = fileConfiguration.getInt(".border_size_min");
-			MetaData.border_size_lower_per_time = fileConfiguration.getInt(".border_size_lower_per_time");
+			MetaData.border_size_lower_time = fileConfiguration.getInt(".border_size_lower_time");
 			
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_x);
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_z);
@@ -37,9 +37,9 @@ public class Config {
 			fileConfiguration.set(".spawn_z", 80);
 			fileConfiguration.set(".spawn_y", 0);
 
-			fileConfiguration.set(".border_size", 0);
-			fileConfiguration.set(".border_size_min", 0);
-			fileConfiguration.set(".border_size_lower_per_time", 0);
+			fileConfiguration.set(".border_size", 500);
+			fileConfiguration.set(".border_size_min", 100);
+			fileConfiguration.set(".border_size_lower_time", 20);
 			
 			try {
 				fileConfiguration.save(configFile);
