@@ -95,6 +95,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		/**
 		 * DEBUG
+		 * startbereit machen
 		 */
 		if (label.equalsIgnoreCase("refresh")) {
 			if (sender instanceof Player) {
