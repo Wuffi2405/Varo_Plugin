@@ -17,6 +17,8 @@ public class MetaData {
 
 	public static ArrayList<Player> players_ingame = new ArrayList<>();
 
+	public static boolean countdownisrunning = false;
+	
 	public static int spawn_x;
 	public static int spawn_z;
 	public static int spawn_y;

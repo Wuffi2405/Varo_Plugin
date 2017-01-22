@@ -102,6 +102,8 @@ public class Main extends JavaPlugin implements Listener {
 						MetaData.players_dummy_online_start.add(p);
 						p.sendMessage("Du wurdest zu nicht bereit hinzugefügt!");
 
+					} else {
+						p.sendMessage("keine Änderungen wurden vorgenommen!");
 					}
 
 					if (!MetaData.players_online.contains(p)) {
@@ -109,6 +111,17 @@ public class Main extends JavaPlugin implements Listener {
 						MetaData.players_online.add(p);
 						p.sendMessage("Du wurdest zu Online hinzugefügt!");
 
+					} else {
+						p.sendMessage("keine Änderungen wurden vorgenommen!");
+					}
+
+					if (!MetaData.players.contains(p)) {
+
+						MetaData.players.add(p);
+						p.sendMessage("Du wurdest zu startfähig hinzugefügt!");
+
+					} else {
+						p.sendMessage("keine Änderungen wurden vorgenommen!");
 					}
 
 				}
@@ -121,42 +134,56 @@ public class Main extends JavaPlugin implements Listener {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 
-				if (!MetaData.players_bereit.contains(player)) {
-					MetaData.players_bereit.add(player);
+				if (MetaData.countdownisrunning = false) {
 
-					for (Player p : Bukkit.getOnlinePlayers()) {
+					if (!MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
+						MetaData.players_bereit.add(player);
 
-						if (MetaData.players_bereit.contains(p)) {
+						for (Player p : Bukkit.getOnlinePlayers()) {
 
-							MetaData.players_dummy_online_start.remove(p);
+							if (MetaData.players_bereit.contains(p)) {
 
-							int bereit = MetaData.players_bereit.size();
-							int nichtbereit = MetaData.players_online.size();
+								MetaData.players_dummy_online_start.remove(p);
 
-							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      "
-									+ bereit + "/" + nichtbereit);
+								int bereit = MetaData.players_bereit.size();
+								int nichtbereit = MetaData.players_online.size();
 
-							if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
+								Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      "
+										+ bereit + "/" + nichtbereit);
 
-								Bukkit.broadcastMessage("Alle sind bereit und das Spiel wird gestartet!");
-								engine.startCountdown(player);
+								if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
+
+									Bukkit.broadcastMessage("Alle sind bereit und das Spiel wird gestartet!");
+									engine.startCountdown(player);
+
+								}
 
 							}
 
 						}
 
+					} else
+
+					if (MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
+						MetaData.players_bereit.remove(player);
+
+						int bereit = MetaData.players_bereit.size();
+						int nichtbereit = MetaData.players_online.size();
+
+						Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht bereit!               " + bereit
+								+ "/" + nichtbereit);
+					} else
+
+					if (!MetaData.players.contains(player)) {
+
+						player.sendMessage("Du bist leider nicht startfähig /refresh");
+
 					}
 
 				} else
 
-				if (MetaData.players_bereit.contains(player)) {
-					MetaData.players_bereit.remove(player);
-
-					int bereit = MetaData.players_bereit.size();
-					int nichtbereit = MetaData.players_online.size();
-
-					Bukkit.broadcastMessage(
-							player.getDisplayName() + " ist nicht bereit!               " + bereit + "/" + nichtbereit);
+				{
+					player.sendMessage("Der Countdown läuft schon!");
 				}
 
 				return true;

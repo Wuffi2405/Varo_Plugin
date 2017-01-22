@@ -8,7 +8,9 @@ import org.bukkit.entity.Player;
 public class Engine {
 
 	public static Main plugin;
-
+	
+	
+	
 	@SuppressWarnings("static-access")
 	public Engine(Main plugin) {
 		this.plugin = plugin;
@@ -28,6 +30,7 @@ public class Engine {
 				if (i != 0) {
 
 					if (i - 1 != 0) {
+						MetaData.countdownisrunning = true;
 						Bukkit.broadcastMessage(ChatColor.GOLD + "" + (i - 1) + "");
 					}
 
@@ -37,6 +40,7 @@ public class Engine {
 
 				if ((i == 0)) {
 
+					MetaData.countdownisrunning = false;
 					Bukkit.broadcastMessage("GO!");
 					MetaData.players.clear();
 
