@@ -30,7 +30,7 @@ public class Config {
 		} else if (!configFile.exists()) {
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "FILE NOT EXISTS");
 			fileConfiguration.set(".spawn_x", 0);
-			fileConfiguration.set(".spawn_z", 0);
+			fileConfiguration.set(".spawn_z", 80);
 			fileConfiguration.set(".spawn_y", 0);
 
 			
