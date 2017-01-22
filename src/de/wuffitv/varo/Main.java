@@ -1,6 +1,7 @@
 package de.wuffitv.varo;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -155,7 +156,6 @@ public class Main extends JavaPlugin implements Listener {
 
 								MetaData.players_dummy_online_start.remove(p);
 
-<<<<<<< HEAD
 								int bereit = MetaData.players_bereit.size();
 								int nichtbereit = MetaData.players_online.size();
 
@@ -168,10 +168,9 @@ public class Main extends JavaPlugin implements Listener {
 									engine.startCountdown(player);
 
 								}
-=======
+
 								bereit = MetaData.players_bereit.size();
 								nichtbereit = MetaData.players_online.size();
->>>>>>> branch 'master' of https://github.com/Wuffi2405/Varo_Plugin.git
 
 							}
 
