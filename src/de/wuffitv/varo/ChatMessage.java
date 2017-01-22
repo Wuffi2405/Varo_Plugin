@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 
 public class ChatMessage {
 	
-	public static final String PREFIX = ChatColor.DARK_AQUA + "[VARO] ";
+	public static final String PREFIX = ChatColor.DARK_GREEN+"["+ChatColor.GOLD+"VARO"+ChatColor.DARK_GREEN+"] "+ChatColor.WHITE;
 	
 	public static String VARO_PlayerDeathEvent_DieByNatur(Player player, String defaultMessage){
 		return ChatColor.RED + "" + player.getDisplayName() + ChatColor.WHITE + (defaultMessage.replace(player.getDisplayName(), ""));
@@ -16,7 +16,11 @@ public class ChatMessage {
 	}
 	
 	public static String VARO_Player_allBereit(){
-		return PREFIX + "Alle Spieler sind bereit!";
+		return PREFIX + ChatColor.GOLD + "Alle Spieler sind bereit!";
+	}
+	
+	public static String VARO_Player_allBereitAndStarting(){
+		return PREFIX + ChatColor.GOLD + "Alle sind bereit und das Spiel wird gestartet!";
 	}
 	
 	public static String VARO_Player_google(){

@@ -181,8 +181,7 @@ public class Main extends JavaPlugin implements Listener {
 
 						if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
 
-							Bukkit.broadcastMessage(
-									ChatColor.DARK_PURPLE + "Alle sind bereit und das Spiel wird gestartet!");
+							Bukkit.broadcastMessage(ChatMessage.VARO_Player_allBereitAndStarting());
 							engine.startCountdown(player);
 
 						}
