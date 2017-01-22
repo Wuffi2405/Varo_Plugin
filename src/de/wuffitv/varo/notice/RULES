@@ -7,6 +7,7 @@ update [what] {[where]}
 -fixBugs
 -addBugs
 -delete
+-remove
 
 [where]
 -the Class

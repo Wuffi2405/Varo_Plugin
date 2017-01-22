@@ -46,7 +46,6 @@ public class VARO_PlayerJoinEvent implements Listener {
 				MetaData.players_online.add(player);
 
 			}
-			
 				player.sendMessage("Du wurdest hinzugefügt!");
 			
 			player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
