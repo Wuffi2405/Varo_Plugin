@@ -146,7 +146,7 @@ public class Main extends JavaPlugin implements Listener {
 				Player player = (Player) sender;
 
 				if (Engine.countdownrunning == 0) {
-
+						
 					if (!MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
 						MetaData.players_bereit.add(player);
 
@@ -201,7 +201,7 @@ public class Main extends JavaPlugin implements Listener {
 
 					if (!MetaData.players.contains(player)) {
 
-						player.sendMessage("Du bist leider nicht startfähig /refresh");
+						player.sendMessage("[---DEBUG-?---]Du bist leider nicht startfähig /refresh");
 
 					}
 
