@@ -22,6 +22,10 @@ public class MetaData {
 	public static int spawn_x;
 	public static int spawn_z;
 	public static int spawn_y;
+	
+	public static int border_size;
+	public static int border_size_min;
+	public static int border_size_lower_per_time;
 
 	public static final boolean DEBUG = true;
 	
