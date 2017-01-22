@@ -60,7 +60,10 @@ public class Engine {
 						p.setGameMode(GameMode.SURVIVAL);
 						p.getWorld().setDifficulty(Difficulty.HARD);
 						p.teleport(new Location(sender.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
-
+						p.getWorld().getWorldBorder().setCenter(new Location(sender.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+						
+						
+						
 					}
 					i--;
 				}
@@ -71,6 +74,8 @@ public class Engine {
 
 				}
 
+			
+			
 			}
 		}, 20L, 20L);
 	} 
