@@ -2,6 +2,7 @@
 #		2: countdown
 #		3: no kill
 #		4: no break and place
-5. jeder muss /bereit machen, damit der Countdown gestarten werden kann#
+#		5. jeder muss /bereit machen, damit der Countdown gestarten werden kann#
 6. Boarderverkleinerung
 7. Gewinner
+8. Autoteleport bei Countdown (vermutlich eher davor, bei der 10, oder wenn man /bereit macht und dafür aber 20 sek)
