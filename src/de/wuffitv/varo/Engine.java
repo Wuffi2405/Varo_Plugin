@@ -50,6 +50,7 @@ public class Engine {
 
 					countdownrunning = 0;
 					Bukkit.broadcastMessage("GO!");
+					Bukkit.broadcastMessage("Die Border verkleinert sich in " + MetaData.border_size_lower_time + " Sekunden!");
 					MetaData.players.clear();
 
 					for (Player p : Bukkit.getServer().getOnlinePlayers()) {
