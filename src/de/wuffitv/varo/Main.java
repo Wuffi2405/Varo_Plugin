@@ -66,7 +66,6 @@ public class Main extends JavaPlugin implements Listener {
 
 		/**
 		 * start Event
-		 * 
 		 */
 		if (label.equalsIgnoreCase("start")) {
 			if (sender instanceof Player) {
@@ -80,7 +79,10 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-
+		
+		/**
+		 * sich selbst aus der Liste entfernen
+		 */
 		if (label.equalsIgnoreCase("remove")) {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
@@ -91,7 +93,10 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-
+		
+		/**
+		 * BITTE VERVOLLSTÄNDIGEN
+		 */
 		if (label.equalsIgnoreCase("refresh")) {
 			if (sender instanceof Player) {
 
@@ -129,7 +134,11 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
-
+			
+		/**
+		 * Die bereit-Funktion
+		 * Der Countdown geht erst los, wenn alle Spieler bereit sind
+		 */
 		if (label.equalsIgnoreCase("bereit")) {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
