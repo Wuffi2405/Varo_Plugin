@@ -25,6 +25,7 @@ public class Engine {
 	}
 
 	private int countdown;
+	@SuppressWarnings("unused")
 	private int border;
 	private int i = 11;
 

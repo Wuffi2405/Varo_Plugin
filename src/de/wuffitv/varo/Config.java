@@ -41,6 +41,56 @@ public class Config {
 			fileConfiguration.set(".border_size_min", 100);
 			fileConfiguration.set(".border_size_lower_time", 20);
 			
+			fileConfiguration.set(".team1-long", 0);
+			fileConfiguration.set(".team1-short", 0);
+			fileConfiguration.set(".team1-member1", 0);
+			fileConfiguration.set(".team1-mebmer2", 0);
+			
+			fileConfiguration.set(".team2-long", 0);
+			fileConfiguration.set(".team2-short", 0);
+			fileConfiguration.set(".team2-member1", 0);
+			fileConfiguration.set(".team2-mebmer2", 0);
+			
+			fileConfiguration.set(".team3-long", 0);
+			fileConfiguration.set(".team3-short", 0);
+			fileConfiguration.set(".team3-member1", 0);
+			fileConfiguration.set(".team3-mebmer2", 0);
+			
+			fileConfiguration.set(".team4-long", 0);
+			fileConfiguration.set(".team4-short", 0);
+			fileConfiguration.set(".team4-member1", 0);
+			fileConfiguration.set(".team4-mebmer2", 0);
+			
+			fileConfiguration.set(".team5-long", 0);
+			fileConfiguration.set(".team5-short", 0);
+			fileConfiguration.set(".team5-member1", 0);
+			fileConfiguration.set(".team5-mebmer2", 0);
+			
+			fileConfiguration.set(".team6-long", 0);
+			fileConfiguration.set(".team6-short", 0);
+			fileConfiguration.set(".team6-member1", 0);
+			fileConfiguration.set(".team6-mebmer2", 0);
+			
+			fileConfiguration.set(".team7-long", 0);
+			fileConfiguration.set(".team7-short", 0);
+			fileConfiguration.set(".team7-member1", 0);
+			fileConfiguration.set(".team7-mebmer2", 0);
+			
+			fileConfiguration.set(".team8-long", 0);
+			fileConfiguration.set(".team8-short", 0);
+			fileConfiguration.set(".team8-member1", 0);
+			fileConfiguration.set(".team8-mebmer2", 0);
+			
+			fileConfiguration.set(".team9-long", 0);
+			fileConfiguration.set(".team9-short", 0);
+			fileConfiguration.set(".team9-member1", 0);
+			fileConfiguration.set(".team9-mebmer2", 0);
+			
+			fileConfiguration.set(".team10-long", 0);
+			fileConfiguration.set(".team10-short", 0);
+			fileConfiguration.set(".team10-member1", 0);
+			fileConfiguration.set(".team10-mebmer2", 0);
+			
 			try {
 				fileConfiguration.save(configFile);
 			} catch (IOException e) {
