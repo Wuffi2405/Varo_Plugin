@@ -26,6 +26,7 @@ public class Config {
 			MetaData.border_size = fileConfiguration.getInt(".border_size");
 			MetaData.border_size_min = fileConfiguration.getInt(".border_size_min");
 			MetaData.border_size_lower_time = fileConfiguration.getInt(".border_size_lower_time");
+			//---
 			
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_x);
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_z);
