@@ -1,4 +1,4 @@
-package team;
+package de.wuffitv.team;
 
 import java.util.ArrayList;
 
@@ -10,6 +10,8 @@ public class Teams {
 	public static ArrayList<String> team_member2 = new ArrayList<>();
 	
 	public Teams(){
+		
+		
 		
 	}
 	
