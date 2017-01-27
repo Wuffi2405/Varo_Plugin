@@ -57,40 +57,40 @@ public class Config {
 			fileConfiguration.set(".team3-member1", 0);
 			fileConfiguration.set(".team3-mebmer2", 0);
 			
-			fileConfiguration.set(".team4-long", null);
-			fileConfiguration.set(".team4-short", null);
-			fileConfiguration.set(".team4-member1", null);
-			fileConfiguration.set(".team4-mebmer2", null);
+			fileConfiguration.set(".team4-long", 0);
+			fileConfiguration.set(".team4-short", 0);
+			fileConfiguration.set(".team4-member1", 0);
+			fileConfiguration.set(".team4-mebmer2", 0);
 			
-			fileConfiguration.set(".team5-long", null);
-			fileConfiguration.set(".team5-short", null);
-			fileConfiguration.set(".team5-member1", null);
-			fileConfiguration.set(".team5-mebmer2", null);
+			fileConfiguration.set(".team5-long", 0);
+			fileConfiguration.set(".team5-short", 0);
+			fileConfiguration.set(".team5-member1", 0);
+			fileConfiguration.set(".team5-mebmer2", 0);
 			
-			fileConfiguration.set(".team6-long", null);
-			fileConfiguration.set(".team6-short", null);
-			fileConfiguration.set(".team6-member1", null);
-			fileConfiguration.set(".team6-mebmer2", null);
+			fileConfiguration.set(".team6-long", 0);
+			fileConfiguration.set(".team6-short", 0);
+			fileConfiguration.set(".team6-member1", 0);
+			fileConfiguration.set(".team6-mebmer2", 0);
 			
-			fileConfiguration.set(".team7-long", null);
-			fileConfiguration.set(".team7-short", null);
-			fileConfiguration.set(".team7-member1", null);
-			fileConfiguration.set(".team7-mebmer2", null);
+			fileConfiguration.set(".team7-long", 0);
+			fileConfiguration.set(".team7-short", 0);
+			fileConfiguration.set(".team7-member1", 0);
+			fileConfiguration.set(".team7-mebmer2", 0);
 			
-			fileConfiguration.set(".team8-long", null);
-			fileConfiguration.set(".team8-short", null);
-			fileConfiguration.set(".team8-member1", null);
-			fileConfiguration.set(".team8-mebmer2", null);
+			fileConfiguration.set(".team8-long", 0);
+			fileConfiguration.set(".team8-short", 0);
+			fileConfiguration.set(".team8-member1", 0);
+			fileConfiguration.set(".team8-mebmer2", 0);
 			
-			fileConfiguration.set(".team9-long", null);
-			fileConfiguration.set(".team9-short", null);
-			fileConfiguration.set(".team9-member1", null);
-			fileConfiguration.set(".team9-mebmer2", null);
+			fileConfiguration.set(".team9-long", 0);
+			fileConfiguration.set(".team9-short", 0);
+			fileConfiguration.set(".team9-member1", 0);
+			fileConfiguration.set(".team9-mebmer2", 0);
 			
-			fileConfiguration.set(".team10-long", null);
-			fileConfiguration.set(".team10-short", null);
-			fileConfiguration.set(".team10-member1", null);
-			fileConfiguration.set(".team10-mebmer2", null);
+			fileConfiguration.set(".team10-long", 0);
+			fileConfiguration.set(".team10-short", 0);
+			fileConfiguration.set(".team10-member1", 0);
+			fileConfiguration.set(".team10-mebmer2", 0);
 			
 			try {
 				fileConfiguration.save(configFile);
