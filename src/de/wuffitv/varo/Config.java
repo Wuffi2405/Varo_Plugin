@@ -35,27 +35,27 @@ public class Config {
 		} else if (!configFile.exists()) {
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "FILE NOT EXISTS");
 			fileConfiguration.set(".spawn_x", 0);
-			fileConfiguration.set(".spawn_z", 80);
-			fileConfiguration.set(".spawn_y", 0);
+			fileConfiguration.set(".spawn_z", 0);
+			fileConfiguration.set(".spawn_y", 150);
 
 			fileConfiguration.set(".border_size", 500);
 			fileConfiguration.set(".border_size_min", 100);
 			fileConfiguration.set(".border_size_lower_time", 20);
+		
+			fileConfiguration.set(".team1-long", 0);
+			fileConfiguration.set(".team1-short", 0);
+			fileConfiguration.set(".team1-member1", 0);
+			fileConfiguration.set(".team1-mebmer2", 0);
 			
-			fileConfiguration.set(".team1-long", null);
-			fileConfiguration.set(".team1-short", null);
-			fileConfiguration.set(".team1-member1", null);
-			fileConfiguration.set(".team1-mebmer2", null);
+			fileConfiguration.set(".team2-long", 0);
+			fileConfiguration.set(".team2-short", 0);
+			fileConfiguration.set(".team2-member1", 0);
+			fileConfiguration.set(".team2-mebmer2", 0);
 			
-			fileConfiguration.set(".team2-long", null);
-			fileConfiguration.set(".team2-short", null);
-			fileConfiguration.set(".team2-member1", null);
-			fileConfiguration.set(".team2-mebmer2", null);
-			
-			fileConfiguration.set(".team3-long", null);
-			fileConfiguration.set(".team3-short", null);
-			fileConfiguration.set(".team3-member1", null);
-			fileConfiguration.set(".team3-mebmer2", null);
+			fileConfiguration.set(".team3-long", 0);
+			fileConfiguration.set(".team3-short", 0);
+			fileConfiguration.set(".team3-member1", 0);
+			fileConfiguration.set(".team3-mebmer2", 0);
 			
 			fileConfiguration.set(".team4-long", null);
 			fileConfiguration.set(".team4-short", null);

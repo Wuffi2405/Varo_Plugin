@@ -49,6 +49,10 @@ public class VARO_PlayerJoinEvent implements Listener {
 			}
 				player.sendMessage("Du wurdest hinzugefügt!");
 			
+			/**
+			 * Spieler zum spawn teleportieren
+			 */
+			player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
 			player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
 
 			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
