@@ -1,4 +1,4 @@
-package de.wuffitv.varo;
+package de.wuffitv.varo.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,27 +16,14 @@ public class Config {
 	public Config() {
 		if (configFile.exists()) {
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "FILE EXISTS");
-			/**
-			 * laden
-			 */
-			MetaData.spawn_x = fileConfiguration.getInt(".spawn_x");
-			MetaData.spawn_z = fileConfiguration.getInt(".spawn_z");
-			MetaData.spawn_y = fileConfiguration.getInt(".spawn_y");
 			
-			MetaData.border_size = fileConfiguration.getInt(".border_size");
-			MetaData.border_size_min = fileConfiguration.getInt(".border_size_min");
-			MetaData.border_size_lower_time = fileConfiguration.getInt(".border_size_lower_time");
-			//---
-			
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_x);
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_z);
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + MetaData.spawn_y);
+			loadData();
 
 		} else if (!configFile.exists()) {
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "FILE NOT EXISTS");
 			fileConfiguration.set(".spawn_x", 0);
 			fileConfiguration.set(".spawn_z", 0);
-			fileConfiguration.set(".spawn_y", 150);
+			fileConfiguration.set(".spawn_y", 80);
 
 			fileConfiguration.set(".border_size", 500);
 			fileConfiguration.set(".border_size_min", 100);
@@ -101,6 +88,38 @@ public class Config {
 			System.err.println("[Varo] [Config] [Config] Error with configFile");
 			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "ERROR");
 		}
+		
+		/**
+		 * Hier die Klasse nochmal aufrufen, weil sonst die Spawn Koords nicht funktionieren.
+		 * Gilt nur für erst rl
+		 */
+		loadData();
 	}
-
+	
+	void loadData(){
+		/**
+		 * laden
+		 */
+		MetaData.spawn_x = fileConfiguration.getInt(".spawn_x");
+		MetaData.spawn_z = fileConfiguration.getInt(".spawn_z");
+		MetaData.spawn_y = fileConfiguration.getInt(".spawn_y");
+		
+		MetaData.border_size = fileConfiguration.getInt(".border_size");
+		MetaData.border_size_min = fileConfiguration.getInt(".border_size_min");
+		MetaData.border_size_lower_time = fileConfiguration.getInt(".border_size_lower_time");
+		//---
+		MetaData.team1_long = fileConfiguration.getString(".team1-long");
+		
+		
+		/**
+		 * Debugging Ausgabe
+		 */
+		if(MetaData.DEBUG){
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "X:" + MetaData.spawn_x);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Z:" + MetaData.spawn_z);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Y:" + MetaData.spawn_y);
+		}
+		
+	}
+	
 }

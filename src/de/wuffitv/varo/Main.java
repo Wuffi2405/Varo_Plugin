@@ -11,23 +11,31 @@ import de.wuffitv.varo.event.VARO_BlockBreakEvent;
 import de.wuffitv.varo.event.VARO_BlockPlaceEvent;
 import de.wuffitv.varo.event.VARO_PlayerDeathEvent;
 import de.wuffitv.varo.event.VARO_PlayerJoinEvent;
+import de.wuffitv.varo.util.ChatMessage;
+import de.wuffitv.varo.util.Config;
+import de.wuffitv.varo.util.Engine;
+import de.wuffitv.varo.util.MetaData;
 
 public class Main extends JavaPlugin implements Listener {
 
 	Engine engine;
 	public static int bereit;
 	public static int nichtbereit;
-
+	
 	@Override
 	public void onEnable() {
 		super.onEnable();
-
-		new Config();
-
-		Bukkit.getConsoleSender().sendMessage("[VARO] was enabled");
+		
+		/**
+		 * pre-load
+		 */
+		MetaData.PLUGIN_VERSION = Bukkit.getServer().getPluginManager().getPlugin("Varo_Plugin").getDescription().getVersion();
+		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " was enabled");
+		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " version: " + MetaData.PLUGIN_VERSION);
 		/**
 		 * Load Engines
 		 */
+		new Config();
 		engine = new Engine(this);
 
 		/**
@@ -39,7 +47,7 @@ public class Main extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(new VARO_PlayerJoinEvent(), this);
 		Bukkit.getPluginManager().registerEvents(new VARO_BlockBreakEvent(), this);
 		Bukkit.getPluginManager().registerEvents(new VARO_BlockPlaceEvent(), this);
-
+		
 		saveDefaultConfig();
 
 	}
@@ -144,11 +152,17 @@ public class Main extends JavaPlugin implements Listener {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 
-				if (Engine.countdownrunning == 0) {
+				if (Engine.countdownrunning == false) {
 						
+					/**
+					 * Spieler wird in beide Listen hinzugefügt
+					 */
 					if (!MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
 						MetaData.players_bereit.add(player);
-
+							
+						/**
+						 * geht alle Spieler ab, die online sind
+						 */
 						for (Player p : Bukkit.getOnlinePlayers()) {
 
 							if (MetaData.players_bereit.contains(p)) {
@@ -175,8 +189,8 @@ public class Main extends JavaPlugin implements Listener {
 
 						}
 
-						Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      " + bereit
-								+ "/" + nichtbereit);
+						Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      " + (bereit+1)
+								+ "/" + (nichtbereit+1));
 
 						if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
 
@@ -203,7 +217,7 @@ public class Main extends JavaPlugin implements Listener {
 
 					}
 
-				} else if (Engine.countdownrunning == 1) {
+				} else if (Engine.countdownrunning == true) {
 
 					player.sendMessage("Der countdown läuft bereits");
 

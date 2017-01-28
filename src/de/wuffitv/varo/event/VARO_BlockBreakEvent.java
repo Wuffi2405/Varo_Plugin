@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import de.wuffitv.varo.MetaData;
+import de.wuffitv.varo.util.MetaData;
 
 public class VARO_BlockBreakEvent implements Listener {
 	

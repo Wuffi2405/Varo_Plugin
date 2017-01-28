@@ -1,11 +1,11 @@
-package de.wuffitv.varo;
+package de.wuffitv.varo.util;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class ChatMessage {
 	
-	public static final String PREFIX = ChatColor.DARK_GREEN+"["+ChatColor.GOLD+"VARO"+ChatColor.DARK_GREEN+"] "+ChatColor.WHITE;
+	public static final String PREFIX = ChatColor.DARK_GREEN+"["+ChatColor.LIGHT_PURPLE+"VARO"+ChatColor.DARK_GREEN+"] "+ChatColor.WHITE;
 	
 	public static String VARO_PlayerDeathEvent_DieByNatur(Player player, String defaultMessage){
 		return ChatColor.RED + "" + player.getDisplayName() + ChatColor.WHITE + (defaultMessage.replace(player.getDisplayName(), ""));

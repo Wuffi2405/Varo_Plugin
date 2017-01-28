@@ -1,4 +1,4 @@
-package de.wuffitv.varo;
+package de.wuffitv.varo.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -8,6 +8,8 @@ import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import de.wuffitv.varo.Main;
+
 public class Engine {
 
 	public static Main plugin;
@@ -16,7 +18,7 @@ public class Engine {
 	 * ob der countdown läuft
 	 */
 	
-	public static int countdownrunning = 0;
+	public static boolean countdownrunning = false;
 	
 	
 	@SuppressWarnings("static-access")
@@ -36,22 +38,25 @@ public class Engine {
 
 			@Override
 			public void run() {
-
+				Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "" + i);
 				if (i != 0) {
 
-					if (i - 1 != 0) {
-						countdownrunning = 1;
+					if (i - 1 != 0 && i >= 0) {
+						if(i <= 0){
+//							Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "i <= 0");
+						}
+						countdownrunning = true;
 						Bukkit.broadcastMessage(ChatColor.GOLD + "" + (i - 1) + "");
+						
 					}
-
 					i--;
-
 				}
 
 				if ((i == 0)) {
 
-					countdownrunning = 0;
-					Bukkit.broadcastMessage("GO!");
+					countdownrunning = false;
+					Bukkit.broadcastMessage(ChatMessage.PREFIX + "GO!");
+					Bukkit.broadcastMessage(ChatMessage.PREFIX + "Das Spiel hat begonnen");
 					Bukkit.broadcastMessage("Die Border verkleinert sich in " + MetaData.border_size_lower_time + " Sekunden!");
 					
 					
@@ -78,9 +83,13 @@ public class Engine {
 					
 					
 					MetaData.players.clear();
-
+					
+					/**
+					 * was mit dem Spieler passiert, wenn es losgeht
+					 */
 					for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-
+						
+						/* Inventar säubern? */
 						p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
 						p.setHealth(20);
 						p.setSaturation(20);
@@ -98,7 +107,7 @@ public class Engine {
 				if (i == -1) {
 
 					Bukkit.getServer().getScheduler().cancelTask(countdown);
-
+					
 				}
 
 			

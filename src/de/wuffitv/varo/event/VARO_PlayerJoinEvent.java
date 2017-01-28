@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import de.wuffitv.varo.MetaData;
+import de.wuffitv.varo.util.MetaData;
 
 public class VARO_PlayerJoinEvent implements Listener {
 
@@ -52,8 +52,10 @@ public class VARO_PlayerJoinEvent implements Listener {
 			/**
 			 * Spieler zum spawn teleportieren
 			 */
-			player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
-			player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+			if(!MetaData.players_ingame.contains(player)){
+				player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+				player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+			}
 
 			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
 			// player.sendMessage("Du wurdest hinzugefügt!");

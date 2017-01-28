@@ -6,8 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 
-import de.wuffitv.varo.ChatMessage;
-import de.wuffitv.varo.MetaData;
+import de.wuffitv.varo.util.ChatMessage;
+import de.wuffitv.varo.util.MetaData;
 
 public class VARO_PlayerDeathEvent implements Listener {
 
