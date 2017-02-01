@@ -47,25 +47,26 @@ public class VARO_PlayerJoinEvent implements Listener {
 				MetaData.players_online.add(player);
 
 			}
-				player.sendMessage("Du wurdest hinzugefügt!");
 			
+			player.sendMessage("Du wurdest hinzugefügt!");
+
 			/**
 			 * Spieler zum spawn teleportieren
 			 */
-			if(!MetaData.players_ingame.contains(player)){
+			if (!MetaData.players_ingame.contains(player)) {
 				player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
 				player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
 			}
 
 			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
 			// player.sendMessage("Du wurdest hinzugefügt!");
-			
+
 			/**
 			 * survival bei join
 			 */
-			
+
 			player.setGameMode(GameMode.SURVIVAL);
-			
+
 		}
 
 	}

@@ -32,6 +32,10 @@ public class MetaData {
 	 */
 	public static ArrayList<Player> players_ingame = new ArrayList<>();
 
+	/**
+	 * Spieler die bereits ausgeschieden sind
+	 */
+	public static ArrayList<Player> players_outgame = new ArrayList<>();
 	
 	public static int spawn_x;
 	public static int spawn_z;

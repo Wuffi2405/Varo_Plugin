@@ -24,9 +24,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 
 		/**
 		 * Vermeidung des Todes
-		 * 
 		 */
-
 		if (MetaData.players.contains(event.getEntity().getPlayer())) {
 
 			event.getEntity().getPlayer().setHealth(20);
@@ -46,7 +44,20 @@ public class VARO_PlayerDeathEvent implements Listener {
 				 * set Chatmessage
 				 */
 				event.setDeathMessage(ChatMessage.VARO_PlayerDeathEvent_DieByPlayer(player, killer));
-
+				
+				if(MetaData.players.contains(player)){
+					MetaData.players.remove(player);
+				}
+				if(MetaData.players_bereit.contains(player)){
+					MetaData.players_bereit.remove(player);
+				}
+				if(MetaData.players_ingame.contains(player)){
+					MetaData.players_ingame.remove(player);
+				}
+				if(MetaData.players_online.contains(player)){
+					MetaData.players_ingame.remove(player);
+				}
+				
 				/**
 				 * Player heilen --> stirbt sonst beim nächsten joinene Player
 				 * wird gekickt Player wird gebannt
@@ -64,7 +75,20 @@ public class VARO_PlayerDeathEvent implements Listener {
 				 * set DeathMessage
 				 */
 				event.setDeathMessage(ChatMessage.VARO_PlayerDeathEvent_DieByNatur(player, event.getDeathMessage()));
-
+				
+				if(MetaData.players.contains(player)){
+					MetaData.players.remove(player);
+				}
+				if(MetaData.players_bereit.contains(player)){
+					MetaData.players_bereit.remove(player);
+				}
+				if(MetaData.players_ingame.contains(player)){
+					MetaData.players_ingame.remove(player);
+				}
+				if(MetaData.players_online.contains(player)){
+					MetaData.players_ingame.remove(player);
+				}
+				
 				/**
 				 * Player heilen --> stirbt sonst beim nächsten joinen Player
 				 * wird gekickt Player wird gebannt
@@ -75,7 +99,15 @@ public class VARO_PlayerDeathEvent implements Listener {
 			}
 
 		}
-
+		
+		/**
+		 * Gewinner anzeigen Funktion
+		 */
+//		if(Bukkit.getServer().getOnlinePlayers().size() == 2){
+////			if(Teams.playersHaveSameTeam() == true){
+////				
+////			}
+//		}
 	}
 
 }

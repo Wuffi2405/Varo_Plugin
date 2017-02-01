@@ -16,8 +16,10 @@ public class VARO_BlockPlaceEvent implements Listener{
 			 * Plazieren unterbinden
 			 * Nachricht an den Spieler
 			 */
-			event.setCancelled(true);
-			event.getPlayer().sendMessage(ChatColor.GOLD + "Du kannst noch keine Blöcke setzen.\nWarte bis das Event beginnt!");
+			if(!MetaData.players_ingame.contains(event.getPlayer())){
+				event.setCancelled(true);
+				event.getPlayer().sendMessage(ChatColor.GOLD + "Du kannst noch keine Blöcke setzen.\nWarte bis das Event beginnt!");
+			}
 		}
 	}
 	

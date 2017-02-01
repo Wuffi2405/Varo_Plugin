@@ -1,6 +1,6 @@
 name: Varo_Plugin
 author: Wuffi2405&FraFrieFa
-version: 0.1.1 [Alpha 1.1]
+version: 0.1.2 [Alpha 1.2]
 description: varo
 main: de.wuffitv.varo.Main
 commands:
@@ -14,3 +14,5 @@ commands:
     usage: /bereit
   refresh:
     usage: /refresh
+  online:
+    usage: /online
