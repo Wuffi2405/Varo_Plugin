@@ -149,12 +149,12 @@ public class Main extends JavaPlugin implements Listener {
 			if(sender instanceof Player){
 				sender.sendMessage(ChatColor.AQUA+"get online players" + Bukkit.getServer().getOnlinePlayers());
 				sender.sendMessage(ChatColor.AQUA+"get ingame players: " + MetaData.players_ingame.size());
-				Teams.getWinnerOfTheMatch();
+//				Teams.getWinnerOfTheMatch();
 				return true;
 			}else{
 				Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA+"" + Bukkit.getServer().getOnlinePlayers());
 				Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA+"get ingame players: " + MetaData.players_ingame.size());
-				Teams.getWinnerOfTheMatch();
+//				Teams.getWinnerOfTheMatch();
 				return true;
 			}
 		}
