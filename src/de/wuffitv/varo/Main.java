@@ -214,7 +214,7 @@ public class Main extends JavaPlugin implements Listener {
 						int nichtbereit = Bukkit.getServer().getOnlinePlayers().size();
 
 						Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht bereit!               " + bereit
-								+ "/" + nichtbereit);
+								+ "/" + nichtbereit); 
 					} else
 
 					if (!MetaData.players.contains(player)) {
