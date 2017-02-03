@@ -13,14 +13,14 @@ import de.wuffitv.varo.Main;
 public class Engine {
 
 	public static Main plugin;
-	
+	int smallborder;
+	int smallbordertime = MetaData.border_size_lower_time;
 	/**
 	 * ob der countdown läuft
 	 */
-	
+
 	public static boolean countdownrunning = false;
-	
-	
+
 	@SuppressWarnings("static-access")
 	public Engine(Main plugin) {
 		this.plugin = plugin;
@@ -38,16 +38,17 @@ public class Engine {
 
 			@Override
 			public void run() {
-				
+
 				if (i != 0) {
 
 					if (i - 1 != 0 && i >= 0) {
-						if(i <= 0){
-//							Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "i <= 0");
+						if (i <= 0) {
+							// Bukkit.getConsoleSender().sendMessage(ChatColor.RED
+							// + "i <= 0");
 						}
 						countdownrunning = true;
 						Bukkit.broadcastMessage(ChatColor.GOLD + "" + (i - 1) + "");
-						
+
 					}
 					i--;
 				}
@@ -57,20 +58,16 @@ public class Engine {
 					countdownrunning = false;
 					Bukkit.broadcastMessage(ChatMessage.PREFIX + "GO!");
 					Bukkit.broadcastMessage(ChatMessage.PREFIX + "Das Spiel hat begonnen");
-					Bukkit.broadcastMessage("Die Border verkleinert sich in  " + MetaData.border_size_lower_time + " Sekunden!");
-					
-					
-					
-					
-					
-					
+					Bukkit.broadcastMessage(
+							"Die Border verkleinert sich in  " + MetaData.border_size_lower_time + " Sekunden!");
+
 					MetaData.players.clear();
-					
+
 					/**
 					 * was mit dem Spieler passiert, wenn es losgeht
 					 */
 					for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-						
+
 						/* Inventar säubern? */
 						p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
 						p.setHealth(20);
@@ -78,25 +75,41 @@ public class Engine {
 						p.getInventory().clear();
 						p.setGameMode(GameMode.SURVIVAL);
 						p.getWorld().setDifficulty(Difficulty.HARD);
-						p.getWorld().getWorldBorder().setCenter(new Location(sender.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+						p.getWorld().getWorldBorder().setCenter(
+								new Location(sender.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
 						MetaData.players_ingame.add(p);
-						
-						
-						
+						p.getWorld().getWorldBorder().setSize(MetaData.border_size);
+
 					}
+
+					smallborder = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+
+						@Override
+						public void run() {
+
+							Bukkit.broadcastMessage("Border in " + smallbordertime);
+							smallbordertime--;
+
+							if (smallbordertime == 0) {
+								Bukkit.broadcastMessage(ChatMessage.PREFIX + "Border wird verkleinert");
+								Bukkit.getScheduler().cancelTask(smallborder);
+								sender.getWorld().getWorldBorder().setSize(MetaData.border_size_min, 72000);
+							}
+
+						}
+					}, 20, 20);
+
 					i--;
 				}
 
 				if (i == -1) {
 
 					Bukkit.getServer().getScheduler().cancelTask(countdown);
-					
+
 				}
 
-			
-			
 			}
 		}, 20L, 20L);
-	} 
-	
+	}
+
 }

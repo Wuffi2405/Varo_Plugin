@@ -12,7 +12,7 @@ import de.wuffitv.varo.event.VARO_BlockBreakEvent;
 import de.wuffitv.varo.event.VARO_BlockPlaceEvent;
 import de.wuffitv.varo.event.VARO_PlayerDeathEvent;
 import de.wuffitv.varo.event.VARO_PlayerJoinEvent;
-import de.wuffitv.varo.team.Teams;
+import de.wuffitv.varo.event.VARO_PlayerLeaveEvent;
 import de.wuffitv.varo.util.ChatMessage;
 import de.wuffitv.varo.util.Config;
 import de.wuffitv.varo.util.Engine;
@@ -21,9 +21,7 @@ import de.wuffitv.varo.util.MetaData;
 public class Main extends JavaPlugin implements Listener {
 
 	Engine engine;
-	Teams team;
-	public static int bereit;
-	public static int nichtbereit;
+
 
 	@Override
 	public void onEnable() {
@@ -32,16 +30,16 @@ public class Main extends JavaPlugin implements Listener {
 		/**
 		 * pre-load
 		 */
-		MetaData.PLUGIN_VERSION = Bukkit.getServer().getPluginManager().getPlugin("Varo_Plugin").getDescription().getVersion();
+		MetaData.PLUGIN_VERSION = Bukkit.getServer().getPluginManager().getPlugin("Varo_Plugin").getDescription()
+				.getVersion();
 		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " was enabled");
 		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " version: " + MetaData.PLUGIN_VERSION);
-		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " DebuggingModus:"+MetaData.DEBUG);
+		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " DebuggingModus:" + MetaData.DEBUG);
 		/**
 		 * Load Engines
 		 */
 		new Config();
 		engine = new Engine(this);
-		team = new Teams();
 
 		/**
 		 * register Events
@@ -52,7 +50,9 @@ public class Main extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(new VARO_PlayerJoinEvent(), this);
 		Bukkit.getPluginManager().registerEvents(new VARO_BlockBreakEvent(), this);
 		Bukkit.getPluginManager().registerEvents(new VARO_BlockPlaceEvent(), this);
+		Bukkit.getPluginManager().registerEvents(new VARO_PlayerLeaveEvent(), this);
 
+		
 		saveDefaultConfig();
 
 	}
@@ -112,15 +112,6 @@ public class Main extends JavaPlugin implements Listener {
 
 				for (Player p : Bukkit.getOnlinePlayers()) {
 
-					if (!MetaData.players_bereit.contains(p)) {
-
-						MetaData.players_dummy_online_start.add(p);
-						p.sendMessage("[DEBUG] Du wurdest zu nicht bereit hinzugefügt!");
-
-					} else {
-						p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
-					}
-
 					if (!MetaData.players_online.contains(p)) {
 
 						MetaData.players_online.add(p);
@@ -169,52 +160,44 @@ public class Main extends JavaPlugin implements Listener {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 
-				if (Engine.countdownrunning == false) {
+				if (Engine.countdownrunning == false && !MetaData.players_ingame.contains(player)) {
 
 					/**
-					 * Spieler wird in beide Listen hinzugefügt
+					 * geht alle Spieler ab, die online sind
 					 */
-					if (!MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
+
+					if (!MetaData.players_bereit.contains(player)) {
+
 						MetaData.players_bereit.add(player);
 
-						/**
-						 * geht alle Spieler ab, die online sind
-						 */
 						
-							if (MetaData.players_bereit.contains(player)) {
-
-								MetaData.players_dummy_online_start.remove(player);
-
-								int bereit = MetaData.players_bereit.size();
-								int nichtbereit = Bukkit.getServer().getOnlinePlayers().size();
-
-								Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      "
-										+ bereit + "/" + nichtbereit);
-
-								if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
-
-									Bukkit.broadcastMessage(ChatMessage.VARO_Player_allBereit());
-									engine.startCountdown(player);
-
-								
+						int bereit = MetaData.players_bereit.size();
+						int online = Bukkit.getServer().getOnlinePlayers().size();
 
 
-							}
+						Bukkit.broadcastMessage(
+								player.getDisplayName() + " ist bereit!                      " + bereit + "/" + online);
+
+						if ((bereit == online)) {
+
+							Bukkit.broadcastMessage(ChatMessage.VARO_Player_allBereit());
+							engine.startCountdown(player);
 
 						}
 
-						
+					}
 
-					} else
+					else
 
 					if (MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
 						MetaData.players_bereit.remove(player);
-
+						
 						int bereit = MetaData.players_bereit.size();
-						int nichtbereit = Bukkit.getServer().getOnlinePlayers().size();
+						int online = Bukkit.getServer().getOnlinePlayers().size();
 
-						Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht bereit!               " + bereit
-								+ "/" + nichtbereit); 
+
+						Bukkit.broadcastMessage(
+								player.getDisplayName() + " ist nicht bereit!               " + bereit + "/" + online);
 					} else
 
 					if (!MetaData.players.contains(player)) {
@@ -227,6 +210,8 @@ public class Main extends JavaPlugin implements Listener {
 
 					player.sendMessage("Der countdown läuft bereits");
 
+				} else if (MetaData.players_ingame.contains(player)){
+					player.sendMessage("Du bist schon im Spiel!");
 				}
 
 				return true;
