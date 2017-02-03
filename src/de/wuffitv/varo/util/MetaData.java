@@ -44,6 +44,7 @@ public class MetaData {
 	public static int border_size;
 	public static int border_size_min;
 	public static int border_size_lower_time;
+	public static int border_size_lower_timeSize;
 
 	public static final boolean DEBUG = false;
 	
