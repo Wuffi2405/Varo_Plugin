@@ -35,6 +35,7 @@ public class Main extends JavaPlugin implements Listener {
 		MetaData.PLUGIN_VERSION = Bukkit.getServer().getPluginManager().getPlugin("Varo_Plugin").getDescription().getVersion();
 		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " was enabled");
 		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " version: " + MetaData.PLUGIN_VERSION);
+		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " DebuggingModus:"+MetaData.DEBUG);
 		/**
 		 * Load Engines
 		 */

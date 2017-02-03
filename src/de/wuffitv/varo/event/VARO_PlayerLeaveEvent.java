@@ -18,9 +18,9 @@ public class VARO_PlayerLeaveEvent {
 		if(MetaData.players_bereit.contains(player)){
 			MetaData.players_bereit.remove(player);
 		}
-		if(MetaData.players_ingame.contains(player)){
-			MetaData.players_ingame.remove(player);
-		}
+//		if(MetaData.players_ingame.contains(player)){
+//			MetaData.players_ingame.remove(player);
+//		}
 		if(MetaData.players_online.contains(player)){
 			MetaData.players_ingame.remove(player);
 		}
