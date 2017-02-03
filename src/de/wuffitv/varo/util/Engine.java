@@ -33,7 +33,7 @@ public class Engine {
 
 	public void startCountdown(Player sender) {
 
-		i = 11;
+		i = 21;
 		countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
 
 			@Override

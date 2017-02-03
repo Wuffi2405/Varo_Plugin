@@ -28,7 +28,7 @@ public class VARO_PlayerJoinEvent implements Listener {
 		 */
 		e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " has joined the game");
 
-		if (MetaData.players_ingame.contains(player)) {
+		if (!MetaData.players_ingame.contains(player)) {
 			e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " ist wieder da");
 		} else {
 			/**
