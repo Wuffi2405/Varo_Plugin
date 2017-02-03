@@ -6,7 +6,7 @@
 #		6. Boarderverkleinerung
 X		7. Gewinner
 X		8. Autoteleport bei Countdown (vermutlich eher davor, bei der 10, oder wenn man /bereit macht und dafür aber 20 sek)
-9. Bug: Tiere können in der anfänglichen Friedensphase sterben
-10 Bug: Countdown läuft auch unter 0 weiter
+#9. Bug: Tiere können in der anfänglichen Friedensphase sterben
+#10 Bug: Countdown läuft auch unter 0 weiter
 11 Bug: Bei rejoin kein Abbauen oder platzieren möglich
 12 Bug: Bei rejoin kein /bereit möglich

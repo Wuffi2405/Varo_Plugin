@@ -32,8 +32,7 @@ public class Main extends JavaPlugin implements Listener {
 		/**
 		 * pre-load
 		 */
-		MetaData.PLUGIN_VERSION = Bukkit.getServer().getPluginManager().getPlugin("Varo_Plugin").getDescription()
-				.getVersion();
+		MetaData.PLUGIN_VERSION = Bukkit.getServer().getPluginManager().getPlugin("Varo_Plugin").getDescription().getVersion();
 		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " was enabled");
 		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " version: " + MetaData.PLUGIN_VERSION);
 		/**
@@ -146,15 +145,17 @@ public class Main extends JavaPlugin implements Listener {
 		}
 
 		if (label.equalsIgnoreCase("online")) {
-			if(sender instanceof Player){
-				sender.sendMessage(ChatColor.AQUA+"get online players" + Bukkit.getServer().getOnlinePlayers());
-				sender.sendMessage(ChatColor.AQUA+"get ingame players: " + MetaData.players_ingame.size());
-//				Teams.getWinnerOfTheMatch();
+			if (sender instanceof Player) {
+				sender.sendMessage(ChatColor.AQUA + "get online players" + Bukkit.getServer().getOnlinePlayers());
+				sender.sendMessage(ChatColor.AQUA + "get ingame players: " + MetaData.players_ingame.size());
+				// Teams.getWinnerOfTheMatch();
 				return true;
-			}else{
-				Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA+"" + Bukkit.getServer().getOnlinePlayers());
-				Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA+"get ingame players: " + MetaData.players_ingame.size());
-//				Teams.getWinnerOfTheMatch();
+			} else {
+				Bukkit.getServer().getConsoleSender()
+						.sendMessage(ChatColor.AQUA + "" + Bukkit.getServer().getOnlinePlayers());
+				Bukkit.getServer().getConsoleSender()
+						.sendMessage(ChatColor.AQUA + "get ingame players: " + MetaData.players_ingame.size());
+				// Teams.getWinnerOfTheMatch();
 				return true;
 			}
 		}
@@ -178,14 +179,13 @@ public class Main extends JavaPlugin implements Listener {
 						/**
 						 * geht alle Spieler ab, die online sind
 						 */
-						for (Player p : Bukkit.getOnlinePlayers()) {
+						
+							if (MetaData.players_bereit.contains(player)) {
 
-							if (MetaData.players_bereit.contains(p)) {
-
-								MetaData.players_dummy_online_start.remove(p);
+								MetaData.players_dummy_online_start.remove(player);
 
 								int bereit = MetaData.players_bereit.size();
-								int nichtbereit = MetaData.players_online.size();
+								int nichtbereit = Bukkit.getServer().getOnlinePlayers().size();
 
 								Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      "
 										+ bereit + "/" + nichtbereit);
@@ -195,24 +195,14 @@ public class Main extends JavaPlugin implements Listener {
 									Bukkit.broadcastMessage(ChatMessage.VARO_Player_allBereit());
 									engine.startCountdown(player);
 
-								}
+								
 
-								bereit = MetaData.players_bereit.size();
-								nichtbereit = MetaData.players_online.size();
 
 							}
 
 						}
 
-						Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      "
-								+ (bereit + 1) + "/" + (nichtbereit + 1));
-
-						if ((MetaData.players_online.size() == (MetaData.players_bereit.size()))) {
-
-							Bukkit.broadcastMessage(ChatMessage.VARO_Player_allBereitAndStarting());
-							engine.startCountdown(player);
-
-						}
+						
 
 					} else
 
@@ -220,7 +210,7 @@ public class Main extends JavaPlugin implements Listener {
 						MetaData.players_bereit.remove(player);
 
 						int bereit = MetaData.players_bereit.size();
-						int nichtbereit = MetaData.players_online.size();
+						int nichtbereit = Bukkit.getServer().getOnlinePlayers().size();
 
 						Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht bereit!               " + bereit
 								+ "/" + nichtbereit);
