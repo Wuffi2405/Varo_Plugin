@@ -45,7 +45,7 @@ public class MetaData {
 	public static int border_size_min;
 	public static int border_size_lower_time;
 
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 	
 	/**
 	 * MetaDaten vom Plugin
@@ -55,11 +55,11 @@ public class MetaData {
 	/**
 	 * Teams
 	 */
-	public static int teams_value = 0;
-	
-	public static ArrayList<String> teams_names_long = new ArrayList<>();
-	public static ArrayList<String> teams_names_short = new ArrayList<>();
-	public static ArrayList<String> teams_names_member1 = new ArrayList<>();
-	public static ArrayList<String> teams_names_member2 = new ArrayList<>();
+//	public static int teams_value = 0;
+//	
+//	public static ArrayList<String> teams_names_long = new ArrayList<>();
+//	public static ArrayList<String> teams_names_short = new ArrayList<>();
+//	public static ArrayList<String> teams_names_member1 = new ArrayList<>();
+//	public static ArrayList<String> teams_names_member2 = new ArrayList<>();
 	
 }

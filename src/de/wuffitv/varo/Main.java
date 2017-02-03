@@ -36,6 +36,7 @@ public class Main extends JavaPlugin implements Listener {
 				.getVersion();
 		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " was enabled");
 		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " version: " + MetaData.PLUGIN_VERSION);
+		Bukkit.getConsoleSender().sendMessage(ChatMessage.PREFIX + " DebuggingModus:"+MetaData.DEBUG);
 		/**
 		 * Load Engines
 		 */

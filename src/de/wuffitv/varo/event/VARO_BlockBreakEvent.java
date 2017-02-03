@@ -11,6 +11,13 @@ public class VARO_BlockBreakEvent implements Listener {
 	
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event){
+//		if(MetaData.players_ingame.contains(event.getPlayer())){
+//			//
+//		}else if(!MetaData.players_ingame.contains(event.getPlayer())){
+//			event.setCancelled(true);
+//			event.getPlayer().sendMessage(ChatColor.GOLD + "Du kannst noch keine Blöcke abbauen.\nWarte bis das Event beginnt!");
+//		}
+		
 		if(MetaData.players.contains(event.getPlayer())){
 			/**
 			 * Abbauen unterbinden

@@ -11,6 +11,13 @@ public class VARO_BlockPlaceEvent implements Listener{
 	
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event){
+//		if(MetaData.players_ingame.contains(event.getPlayer())){
+//			//
+//		}else if(!MetaData.players_ingame.contains(event.getPlayer())){
+//			event.setCancelled(true);
+//			event.getPlayer().sendMessage(ChatColor.GOLD + "Du kannst noch keine Blöcke setzen.\nWarte bis das Event beginnt!");
+//		}
+		
 		if(MetaData.players.contains(event.getPlayer())){
 			/**
 			 * Plazieren unterbinden
