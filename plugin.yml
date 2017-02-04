@@ -16,3 +16,5 @@ commands:
     usage: /refresh
   online:
     usage: /online
+  varo:
+    usage: /varo

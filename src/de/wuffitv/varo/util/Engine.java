@@ -34,6 +34,8 @@ public class Engine {
 
 	public void startCountdown(Player sender) {
 
+		final Player a = sender;
+		
 		i = 21;
 		countdown = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
 
@@ -87,9 +89,10 @@ public class Engine {
 						p.setGameMode(GameMode.SURVIVAL);
 						p.getWorld().setDifficulty(Difficulty.HARD);
 						p.getWorld().getWorldBorder().setCenter(
-								new Location(sender.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+								new Location(a.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
 						MetaData.players_ingame.add(p);
 						p.getWorld().getWorldBorder().setSize(MetaData.border_size);
+						MetaData.relogable.add(p);
 
 					}
 
@@ -116,7 +119,7 @@ public class Engine {
 							if (smallbordertime == -1) {
 								Bukkit.broadcastMessage(ChatMessage.PREFIX + "Border wird verkleinert");
 								Bukkit.getScheduler().cancelTask(smallborder);
-								sender.getWorld().getWorldBorder().setSize(MetaData.border_size_min,
+								a.getWorld().getWorldBorder().setSize(MetaData.border_size_min,
 										MetaData.border_size_lower_timeSize);
 							}
 

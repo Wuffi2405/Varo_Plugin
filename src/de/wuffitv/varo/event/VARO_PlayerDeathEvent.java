@@ -54,9 +54,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 				if(MetaData.players_ingame.contains(player)){
 					MetaData.players_ingame.remove(player);
 				}
-				if(MetaData.players_online.contains(player)){
-					MetaData.players_ingame.remove(player);
-				}
+				
 				
 				/**
 				 * Player heilen --> stirbt sonst beim nächsten joinene Player
@@ -85,9 +83,7 @@ public class VARO_PlayerDeathEvent implements Listener {
 				if(MetaData.players_ingame.contains(player)){
 					MetaData.players_ingame.remove(player);
 				}
-				if(MetaData.players_online.contains(player)){
-					MetaData.players_ingame.remove(player);
-				}
+				
 				
 				/**
 				 * Player heilen --> stirbt sonst beim nächsten joinen Player

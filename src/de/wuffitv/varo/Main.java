@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -76,6 +77,29 @@ public class Main extends JavaPlugin implements Listener {
 					return true;
 				}
 			}
+			
+			if (label.equalsIgnoreCase("varo")) {
+				if (sender instanceof ConsoleCommandSender) {
+					if(args.length == 1){
+						
+						Player target = Bukkit.getPlayer(args[0]);
+						MetaData.players_ingame.add(target);
+						MetaData.players.remove(target);
+						Bukkit.getConsoleSender().sendMessage(target.getCustomName() + " ist nun ingame!");
+						
+						if(args[0] == "all"){
+							for(Player p : Bukkit.getServer().getOnlinePlayers()){
+								MetaData.players_ingame.add(p);
+								MetaData.players.remove(p);
+
+							}
+						}
+						
+					}else{
+						Bukkit.getConsoleSender().sendMessage("/varo player");
+					}
+				}
+			}
 
 			/**
 			 * start Event
@@ -112,15 +136,7 @@ public class Main extends JavaPlugin implements Listener {
 
 					for (Player p : Bukkit.getOnlinePlayers()) {
 
-						if (!MetaData.players_online.contains(p)) {
-
-							MetaData.players_online.add(p);
-							p.sendMessage("[DEBUG] Du wurdest zu Online hinzugefügt!");
-
-						} else {
-							p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
-						}
-
+						
 						if (!MetaData.players.contains(p)) {
 
 							MetaData.players.add(p);
@@ -138,7 +154,7 @@ public class Main extends JavaPlugin implements Listener {
 
 			if (label.equalsIgnoreCase("online")) {
 				if (sender instanceof Player) {
-					sender.sendMessage(ChatColor.AQUA + "get online players" + Bukkit.getServer().getOnlinePlayers());
+					sender.sendMessage(ChatColor.AQUA + "get online players" + MetaData.players_ingame);
 					sender.sendMessage(ChatColor.AQUA + "get ingame players: " + MetaData.players_ingame.size());
 					// Teams.getWinnerOfTheMatch();
 					return true;
@@ -147,7 +163,7 @@ public class Main extends JavaPlugin implements Listener {
 							.sendMessage(ChatColor.AQUA + "" + Bukkit.getServer().getOnlinePlayers());
 					Bukkit.getServer().getConsoleSender()
 							.sendMessage(ChatColor.AQUA + "get ingame players: " + MetaData.players_ingame.size());
-					// Teams.getWinnerOfTheMatch();
+				
 					return true;
 				}
 			}

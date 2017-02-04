@@ -1,6 +1,5 @@
 package de.wuffitv.varo.event;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -30,43 +29,25 @@ public class VARO_PlayerJoinEvent implements Listener {
 		if (MetaData.players_ingame.contains(player)) {
 			e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " ist wieder da");
 		} else {
+
 			/**
 			 * add Player to List
 			 */
 
 			e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " has joined the game");
-
+			if(!MetaData.players.contains(player)){
 			MetaData.players.add(player);
-
-			if (!MetaData.players_dummy_online_start.contains(player)) {
-
-				MetaData.players_dummy_online_start.add(player);
-
 			}
-
-			if (!MetaData.players_online.contains(player)) {
-
-				MetaData.players_online.add(player);
-
-			}
-
-			player.sendMessage("Du wurdest hinzugefügt!");
 
 			/**
 			 * Spieler zum spawn teleportieren
 			 */
-			if (!MetaData.players_ingame.contains(player)) {
-				player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
-				player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
-			}
-
-			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + player + "wurde der Liste hinzugefügt");
-			// player.sendMessage("Du wurdest hinzugefügt!");
+			player.teleport(new Location(player.getWorld(), MetaData.spawn_x, MetaData.spawn_y, MetaData.spawn_z));
+			player.sendMessage("Du wurdest hinzugefügt!");
 
 			/**
 			 * survival bei join
 			 */
-
 			player.setGameMode(GameMode.SURVIVAL);
 
 		}

@@ -18,24 +18,16 @@ public class MetaData {
 	 * Spieler die bereits auf bereit geschalten haben
 	 */
 	public static ArrayList<Player> players_bereit = new ArrayList<>();
-	/**
-	 * @Fabius Bitte Beschreibung hinzufügen !!!!!!!!!
-	 */
-	public static ArrayList<Player> players_dummy_online_start = new ArrayList<>();
-	/**
-	 * Spieler die online sind
-	 */
-	public static ArrayList<Player> players_online = new ArrayList<>();
+
+		public static ArrayList<Player> relogable = new ArrayList<>();
+		
 
 	/**
 	 * Spieler für die das Spiel bereits begonnen hat
 	 */
 	public static ArrayList<Player> players_ingame = new ArrayList<>();
 
-	/**
-	 * Spieler die bereits ausgeschieden sind
-	 */
-	public static ArrayList<Player> players_outgame = new ArrayList<>();
+	
 
 	public static int spawn_x;
 	public static int spawn_z;
@@ -53,14 +45,6 @@ public class MetaData {
 	 */
 	public static String PLUGIN_VERSION;
 
-	/**
-	 * Teams
-	 */
-	// public static int teams_value = 0;
-	//
-	// public static ArrayList<String> teams_names_long = new ArrayList<>();
-	// public static ArrayList<String> teams_names_short = new ArrayList<>();
-	// public static ArrayList<String> teams_names_member1 = new ArrayList<>();
-	// public static ArrayList<String> teams_names_member2 = new ArrayList<>();
+
 
 }
