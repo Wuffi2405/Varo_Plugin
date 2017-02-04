@@ -22,7 +22,6 @@ public class Main extends JavaPlugin implements Listener {
 
 	Engine engine;
 
-
 	@Override
 	public void onEnable() {
 		super.onEnable();
@@ -52,7 +51,6 @@ public class Main extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(new VARO_BlockPlaceEvent(), this);
 		Bukkit.getPluginManager().registerEvents(new VARO_PlayerLeaveEvent(), this);
 
-		
 		saveDefaultConfig();
 
 	}
@@ -66,159 +64,160 @@ public class Main extends JavaPlugin implements Listener {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-		/**
-		 * google Befehl
-		 */
-		if (label.equalsIgnoreCase("google")) {
-			if (sender instanceof Player) {
-				Player player = (Player) sender;
-				player.sendMessage(ChatMessage.VARO_Player_google());
-				return true;
-			}
-		}
+		if (sender.isOp()) {
 
-		/**
-		 * start Event
-		 */
-		if (label.equalsIgnoreCase("start")) {
-			if (sender instanceof Player) {
-				Player player = (Player) sender;
-
-				engine.startCountdown(player);
-
-				return true;
-			}
-		}
-
-		/**
-		 * DEBUG sich selbst aus der Liste entfernen
-		 */
-		if (label.equalsIgnoreCase("remove")) {
-			if (sender instanceof Player) {
-				Player player = (Player) sender;
-				if (player.isOp()) {
-					MetaData.players.remove(player);
-					player.sendMessage("[DEBUG] Entfernt");
+			/**
+			 * google Befehl
+			 */
+			if (label.equalsIgnoreCase("google")) {
+				if (sender instanceof Player) {
+					Player player = (Player) sender;
+					player.sendMessage(ChatMessage.VARO_Player_google());
+					return true;
 				}
-				return true;
 			}
-		}
 
-		/**
-		 * DEBUG startbereit machen
-		 */
-		if (label.equalsIgnoreCase("refresh")) {
-			if (sender instanceof Player) {
+			/**
+			 * start Event
+			 */
+			if (label.equalsIgnoreCase("start")) {
+				if (sender instanceof Player) {
+					Player player = (Player) sender;
 
-				for (Player p : Bukkit.getOnlinePlayers()) {
+					engine.startCountdown(player);
 
-					if (!MetaData.players_online.contains(p)) {
-
-						MetaData.players_online.add(p);
-						p.sendMessage("[DEBUG] Du wurdest zu Online hinzugefügt!");
-
-					} else {
-						p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
-					}
-
-					if (!MetaData.players.contains(p)) {
-
-						MetaData.players.add(p);
-						p.sendMessage("[DEBUG] Du wurdest zu startfähig hinzugefügt!");
-
-					} else {
-						p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
-					}
-
+					return true;
 				}
-
-				return true;
 			}
-		}
 
-		if (label.equalsIgnoreCase("online")) {
-			if (sender instanceof Player) {
-				sender.sendMessage(ChatColor.AQUA + "get online players" + Bukkit.getServer().getOnlinePlayers());
-				sender.sendMessage(ChatColor.AQUA + "get ingame players: " + MetaData.players_ingame.size());
-				// Teams.getWinnerOfTheMatch();
-				return true;
-			} else {
-				Bukkit.getServer().getConsoleSender()
-						.sendMessage(ChatColor.AQUA + "" + Bukkit.getServer().getOnlinePlayers());
-				Bukkit.getServer().getConsoleSender()
-						.sendMessage(ChatColor.AQUA + "get ingame players: " + MetaData.players_ingame.size());
-				// Teams.getWinnerOfTheMatch();
-				return true;
+			/**
+			 * DEBUG sich selbst aus der Liste entfernen
+			 */
+			if (label.equalsIgnoreCase("remove")) {
+				if (sender instanceof Player) {
+					Player player = (Player) sender;
+					if (player.isOp()) {
+						MetaData.players.remove(player);
+						player.sendMessage("[DEBUG] Entfernt");
+					}
+					return true;
+				}
 			}
-		}
 
-		/**
-		 * Die bereit-Funktion Der Countdown geht erst los, wenn alle Spieler
-		 * bereit sind
-		 */
-		if (label.equalsIgnoreCase("bereit")) {
-			if (sender instanceof Player) {
-				Player player = (Player) sender;
+			/**
+			 * DEBUG startbereit machen
+			 */
+			if (label.equalsIgnoreCase("refresh")) {
+				if (sender instanceof Player) {
 
-				if (Engine.countdownrunning == false && !MetaData.players_ingame.contains(player)) {
+					for (Player p : Bukkit.getOnlinePlayers()) {
 
-					/**
-					 * geht alle Spieler ab, die online sind
-					 */
+						if (!MetaData.players_online.contains(p)) {
 
-					if (!MetaData.players_bereit.contains(player)) {
+							MetaData.players_online.add(p);
+							p.sendMessage("[DEBUG] Du wurdest zu Online hinzugefügt!");
 
-						MetaData.players_bereit.add(player);
+						} else {
+							p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
+						}
 
-						
-						int bereit = MetaData.players_bereit.size();
-						int online = Bukkit.getServer().getOnlinePlayers().size();
+						if (!MetaData.players.contains(p)) {
 
+							MetaData.players.add(p);
+							p.sendMessage("[DEBUG] Du wurdest zu startfähig hinzugefügt!");
 
-						Bukkit.broadcastMessage(
-								player.getDisplayName() + " ist bereit!                      " + bereit + "/" + online);
-
-						if ((bereit == online)) {
-
-							Bukkit.broadcastMessage(ChatMessage.VARO_Player_allBereit());
-							engine.startCountdown(player);
-
+						} else {
+							p.sendMessage("[DEBUG] keine Änderungen wurden vorgenommen!");
 						}
 
 					}
 
-					else
+					return true;
+				}
+			}
 
-					if (MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
-						MetaData.players_bereit.remove(player);
-						
-						int bereit = MetaData.players_bereit.size();
-						int online = Bukkit.getServer().getOnlinePlayers().size();
+			if (label.equalsIgnoreCase("online")) {
+				if (sender instanceof Player) {
+					sender.sendMessage(ChatColor.AQUA + "get online players" + Bukkit.getServer().getOnlinePlayers());
+					sender.sendMessage(ChatColor.AQUA + "get ingame players: " + MetaData.players_ingame.size());
+					// Teams.getWinnerOfTheMatch();
+					return true;
+				} else {
+					Bukkit.getServer().getConsoleSender()
+							.sendMessage(ChatColor.AQUA + "" + Bukkit.getServer().getOnlinePlayers());
+					Bukkit.getServer().getConsoleSender()
+							.sendMessage(ChatColor.AQUA + "get ingame players: " + MetaData.players_ingame.size());
+					// Teams.getWinnerOfTheMatch();
+					return true;
+				}
+			}
 
+			/**
+			 * Die bereit-Funktion Der Countdown geht erst los, wenn alle
+			 * Spieler bereit sind
+			 */
+			if (label.equalsIgnoreCase("bereit")) {
+				if (sender instanceof Player) {
+					Player player = (Player) sender;
 
-						Bukkit.broadcastMessage(
-								player.getDisplayName() + " ist nicht bereit!               " + bereit + "/" + online);
-					} else
+					if (Engine.countdownrunning == false && !MetaData.players_ingame.contains(player)) {
 
-					if (!MetaData.players.contains(player)) {
+						/**
+						 * geht alle Spieler ab, die online sind
+						 */
 
-						player.sendMessage("[---DEBUG-?---]Du bist leider nicht startfähig /refresh");
+						if (!MetaData.players_bereit.contains(player)) {
 
+							MetaData.players_bereit.add(player);
+
+							int bereit = MetaData.players_bereit.size();
+							int online = Bukkit.getServer().getOnlinePlayers().size();
+
+							Bukkit.broadcastMessage(player.getDisplayName() + " ist bereit!                      "
+									+ bereit + "/" + online);
+
+							if ((bereit == online)) {
+
+								Bukkit.broadcastMessage(ChatMessage.VARO_Player_allBereit());
+								engine.startCountdown(player);
+
+							}
+
+						}
+
+						else
+
+						if (MetaData.players_bereit.contains(player) && MetaData.players.contains(player)) {
+							MetaData.players_bereit.remove(player);
+
+							int bereit = MetaData.players_bereit.size();
+							int online = Bukkit.getServer().getOnlinePlayers().size();
+
+							Bukkit.broadcastMessage(player.getDisplayName() + " ist nicht bereit!               "
+									+ bereit + "/" + online);
+						} else
+
+						if (!MetaData.players.contains(player)) {
+
+							player.sendMessage("[---DEBUG-?---]Du bist leider nicht startfähig /refresh");
+
+						}
+
+					} else if (Engine.countdownrunning == true) {
+
+						player.sendMessage("Der countdown läuft bereits");
+
+					} else if (MetaData.players_ingame.contains(player)) {
+						player.sendMessage("Du bist schon im Spiel!");
 					}
 
-				} else if (Engine.countdownrunning == true) {
-
-					player.sendMessage("Der countdown läuft bereits");
-
-				} else if (MetaData.players_ingame.contains(player)){
-					player.sendMessage("Du bist schon im Spiel!");
+					return true;
 				}
-
-				return true;
 			}
 		}
 
 		return super.onCommand(sender, command, label, args);
+
 	}
 
 }

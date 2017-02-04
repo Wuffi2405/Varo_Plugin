@@ -26,7 +26,6 @@ public class VARO_PlayerJoinEvent implements Listener {
 		/**
 		 * create Join Message
 		 */
-		e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " has joined the game");
 
 		if (MetaData.players_ingame.contains(player)) {
 			e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " ist wieder da");
@@ -34,6 +33,9 @@ public class VARO_PlayerJoinEvent implements Listener {
 			/**
 			 * add Player to List
 			 */
+
+			e.setJoinMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " has joined the game");
+
 			MetaData.players.add(player);
 
 			if (!MetaData.players_dummy_online_start.contains(player)) {
@@ -47,7 +49,7 @@ public class VARO_PlayerJoinEvent implements Listener {
 				MetaData.players_online.add(player);
 
 			}
-			
+
 			player.sendMessage("Du wurdest hinzugefügt!");
 
 			/**

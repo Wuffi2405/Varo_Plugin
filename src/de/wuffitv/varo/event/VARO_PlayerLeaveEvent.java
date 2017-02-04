@@ -7,26 +7,17 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import de.wuffitv.varo.util.MetaData;
 
-public class VARO_PlayerLeaveEvent implements Listener{
-	
+public class VARO_PlayerLeaveEvent implements Listener {
+
 	@EventHandler
-	public void onLeave(PlayerQuitEvent event){
+	public void onLeave(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
-		
-		
-	
-	
+
 		if (MetaData.players_bereit.contains(player)) {
 			MetaData.players_bereit.remove(player);
-			
+
 		}
-	
-	
-	
+
 	}
-	
-	
-	
-	
-	
+
 }
