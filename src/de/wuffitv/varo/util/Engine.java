@@ -15,6 +15,7 @@ public class Engine {
 	public static Main plugin;
 	int smallborder;
 	int smallbordertime = MetaData.border_size_lower_time;
+
 	/**
 	 * ob der countdown läuft
 	 */
@@ -47,8 +48,17 @@ public class Engine {
 							// + "i <= 0");
 						}
 						countdownrunning = true;
-						Bukkit.broadcastMessage(ChatColor.GOLD + "" + (i - 1) + "");
 
+						if (i - 1 == 10 || i - 1 == 20 || i - 1 == 15 || i - 1 <= 5) {
+							Bukkit.broadcastMessage(ChatColor.GOLD + "" + (i - 1) + "");
+
+							if (i - 1 <= 5) {
+								for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+									p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 100, 100);
+								}
+							}
+
+						}
 					}
 					i--;
 				}
@@ -58,8 +68,8 @@ public class Engine {
 					countdownrunning = false;
 					Bukkit.broadcastMessage(ChatMessage.PREFIX + "GO!");
 					Bukkit.broadcastMessage(ChatMessage.PREFIX + "Das Spiel hat begonnen");
-					Bukkit.broadcastMessage(
-							"Die Border verkleinert sich in  " + MetaData.border_size_lower_time + " Sekunden!");
+					float starttime = MetaData.border_size_lower_time / 60;
+					Bukkit.broadcastMessage("Die Border verkleinert sich in  " + starttime + " Minuten!");
 
 					MetaData.players.clear();
 
@@ -72,6 +82,7 @@ public class Engine {
 						p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 100);
 						p.setHealth(20);
 						p.setSaturation(20);
+						p.setExp(0.0F);
 						p.getInventory().clear();
 						p.setGameMode(GameMode.SURVIVAL);
 						p.getWorld().setDifficulty(Difficulty.HARD);
@@ -82,18 +93,31 @@ public class Engine {
 
 					}
 
+					smallbordertime--;
 					smallborder = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
 
 						@Override
 						public void run() {
 
-							Bukkit.broadcastMessage("Border in " + smallbordertime);
+							float norm = smallbordertime / 300;
+							float f = smallbordertime / norm;
+
+							if (f == 300) {
+								Bukkit.broadcastMessage(
+										"Borderverkleinerung in " + smallbordertime / 60 + " Minuten!   ");
+							}
+
+							if (smallbordertime <= 4 || smallbordertime == 30 || smallbordertime == 10) {
+								Bukkit.broadcastMessage("Borderverkleinerung in " + smallbordertime + " Sekunden!   ");
+							}
+
 							smallbordertime--;
 
-							if (smallbordertime == 0) {
+							if (smallbordertime == -1) {
 								Bukkit.broadcastMessage(ChatMessage.PREFIX + "Border wird verkleinert");
 								Bukkit.getScheduler().cancelTask(smallborder);
-								sender.getWorld().getWorldBorder().setSize(MetaData.border_size_min, 72000);
+								sender.getWorld().getWorldBorder().setSize(MetaData.border_size_min,
+										MetaData.border_size_lower_timeSize);
 							}
 
 						}
